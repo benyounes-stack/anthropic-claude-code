@@ -1,68 +1,63 @@
 ---
 name: custom-reports
-description: Generate polished, branded client-facing PDF reports ("rapports sur mesure" / custom reports) from any data source — uploaded files (Excel, CSV, Word, PDF), raw text pasted in conversation, connected data (Google Drive, Gmail, Slack, GitHub), a database/API, or advertising platforms like Meta Ads. Use this whenever the user asks for a "rapport", "report", "compte-rendu", a business/financial/performance summary as a PDF, or wants recurring reporting on KPIs, sales, ad spend, project activity, or incidents — even if they don't explicitly say "PDF" or name this skill. Produces a fixed-structure report (executive summary, key findings/KPIs with charts, detailed analysis, recommendations) styled with the client's branding.
+description: Generate polished, branded client-facing PDF reports ("rapports sur mesure" / custom reports) from any data source — uploaded files (Excel, CSV, Word, PDF), raw text pasted in conversation, connected data (Google Drive, Gmail, Slack, GitHub), a database/API, or advertising platforms like Meta Ads, Google Ads, or Triple Whale. Use this whenever the user asks for a "rapport", "report", "compte-rendu", a business/financial/media-performance summary as a PDF, or wants recurring reporting on KPIs, sales, ad spend, funnel/creative performance, or project activity — even if they don't explicitly say "PDF" or name this skill. Produces a numbered-section report (KPI summary, channel/topic deep dives, diagnostic callouts, action plan) styled with the client's branding, built only from data actually available — never invents numbers for sources that aren't connected.
 ---
 
 # Rapports sur mesure (Custom Reports)
 
-This skill turns whatever data the user has into a polished, branded PDF report. It is deliberately opinionated about **structure** (so every report is consistent and easy to skim) while staying flexible about **source** and **content** (so it works for a Meta Ads performance recap, a monthly business review, a financial summary, or an incident report).
+This skill turns whatever data the user has into a polished, branded PDF report. It's opinionated about **honesty and composition** (real data only, built from a fixed catalog of blocks so every report looks like it belongs to the same family) while staying flexible about **which blocks a given report actually uses** — a quick internal KPI recap and a full six-month media-performance deep dive share the same visual language but not the same length.
 
 ## Workflow
 
-1. **Clarify only what's missing.** Before producing anything, make sure you know:
-   - **Source(s)**: uploaded file(s), pasted text, a connector (Drive/Gmail/Slack/GitHub — check `ListConnectors` if unsure what's attached), a database/API, or an ads platform export.
-   - **Report type**: business/activity, financial, or generic. This mostly affects *what goes in* "Constats & indicateurs clés" and "Analyse", not the skeleton.
-   - **Period covered** and **audience** (internal vs. client-facing — affects tone, not structure).
-   - If the user already gave this in their message (file attached, clear ask), don't re-ask — infer and confirm briefly instead of interrogating.
-   - Meta Ads / other ad-platform data: no live connector is assumed. If the user wants ads data and hasn't provided an export, ask them to export CSV/Excel from the platform's dashboard, or check `ListConnectors`/`SearchMcpRegistry` in case one is attached this session.
+1. **Scope the report before building anything.** Nail down:
+   - **What's it about** — a single metric recap, a multi-channel ad-performance report, a financial summary, an incident report, etc.
+   - **Sources** — uploaded file(s), pasted text, a connector (Drive/Gmail/Slack/GitHub/Meta Ads/Google Ads/Triple Whale — check what's actually attached this session, connectors get added and dropped between sessions), a database/API.
+   - **Period** and **audience** (internal vs. client-facing — affects tone, not honesty).
+   - If the user already gave this (file attached, clear ask), infer and confirm briefly rather than interrogating.
 
-2. **Gather and understand the data** before writing a word of the report. Read every source file fully (don't skim a spreadsheet — compute the actual totals/deltas). For connectors, pull only what's relevant to the stated period.
+2. **Audit data availability before promising a structure.** If the user describes an ambitious report (multiple channels, funnel breakdowns, financials, customer cohorts), check what's *actually* connected and callable right now — don't assume a connector from an earlier message in the conversation is still live; MCP connections can drop mid-session. Tell the user plainly which requested sections you can build with real data, which need a connector that isn't attached, and which need information only they have (margins, internal costs, business context, growth plans) — see **Data honesty** below before writing a single number.
 
-3. **Build the charts first, using the `dataviz` skill.** Load it before writing any chart code — it defines the palette, chart-type heuristics, and accessibility rules. Render each chart as a standalone PNG (150–200 dpi, transparent or white background) sized for a print page, e.g. via matplotlib. Save them next to the report's working files. Keep it to the 2-4 charts that actually carry the story (a KPI trend, a breakdown, a comparison) — a report with ten charts is harder to read than one with three good ones.
+3. **Gather and understand the data.** Read every source fully — don't skim a spreadsheet, compute the actual totals/deltas. Pull connector data at the granularity the analysis needs (e.g. ad-level fields for a creative deep-dive, not just campaign totals). If two sources measure the same thing differently (e.g. a platform's own attribution vs. a third-party attribution tool like Triple Whale), keep them labeled separately — never blend or silently pick one as "the" number.
 
-4. **Fill the HTML template** (`assets/report_template.html`) with the report content. Copy the template rather than editing it in place, then replace the placeholders:
-   - `{{TITLE}}`, `{{SUBTITLE}}`, `{{PERIOD}}`, `{{DATE}}` — cover page / header info.
-   - `{{EXEC_SUMMARY}}` — 3-6 sentences, the "if they read nothing else" takeaway.
-   - `{{KPI_CARDS}}` — a row of `<div class="kpi-card">` blocks (label, big number, delta vs. previous period) for the 3-5 headline metrics. See the template comments for the exact markup.
-   - `{{CHARTS}}` — `<img>` tags pointing at the PNGs from step 3, each inside a `<figure>` with a caption.
-   - `{{ANALYSIS}}` — the detailed narrative: what happened, why, what's notable. Use `<h3>` subsections if there's more than one theme.
-   - `{{RECOMMENDATIONS}}` — an ordered or bulleted list of concrete next steps, tied back to specific findings above. Skip filler recommendations that don't follow from the data.
-   - `{{ANNEXES}}` — optional; delete the whole `<section id="annexes">` block if there's nothing to append (raw data tables, methodology notes).
-   - Branding: read `references/brand.json` for the company name, colors, and logo path, and set the corresponding CSS variables / `<img>` src in the template's `:root`/header. It already points at TPS Digital Services' real logo and colors (Noir `#1A1A1A`, Jaune `#FFBB10`) — use it as-is unless the user gives you a different one. Since the rendered HTML is opened as a `file://` URL, the `<img src="...">` for the logo must resolve from wherever the working HTML file lives — either copy `assets/logo.png` next to it, or point straight at the skill's absolute path (`.claude/skills/custom-reports/assets/logo.png`). If `logo_path` in `brand.json` is ever null, fall back to the text wordmark already in the template — don't invent a logo.
+4. **Build charts using the `dataviz` skill.** Load it before writing any chart code — it defines the palette, chart-type heuristics, and accessibility rules (including: never a dual-axis chart — use small multiples or index to a common base instead when two series have very different scales). Render each as a standalone PNG (150–200 dpi) sized for a print page via matplotlib. Keep it to the charts that carry the story, not one per metric.
 
-5. **Render to PDF** with the bundled script — don't hand-roll a PDF pipeline:
+5. **Compose the report from the block catalog** in `references/components.md` — read it before writing HTML. Copy `assets/report_template.html` per report (don't edit the shared copy), fill the header placeholders, then build the body by picking blocks: section headers (numbered sequentially), KPI rows, objective-vs-actual bars, dividers between channels/phases, month grids, tables, the four callout roles (wins/fixes/actions/diagnostic), phased plan grids, creative cards, and data-gap notes. See **Report anatomy** below for how to pick and order them.
+   - Branding: `references/brand.json` has the company's real colors/logo/footer text — use it as-is. `--primary`/`--accent` are the *only* brand-colored elements; every status color (green/red/orange/blue in tags, obj-bars, callout boxes, plan-grid) is functional and must never be repainted to brand colors — see `components.md`'s color rule.
+   - Logo: the HTML is opened as a `file://` URL, so `<img src="...">` must resolve from wherever the working copy lives — copy `assets/logo.png` next to it, or use the skill's absolute path.
+
+6. **Render to PDF** with the bundled script:
    ```bash
    node .claude/skills/custom-reports/scripts/render_pdf.js <input.html> <output.pdf>
    ```
-   This prints via headless Chromium (Playwright, already available in this environment) with proper page breaks and a running footer showing the company name and page numbers (pulled from `references/brand.json`). Check the resulting PDF actually rendered (non-zero size, expected page count) before telling the user it's done.
+   Headless Chromium (Playwright) with page breaks and a running footer (company name + page numbers from `brand.json`). Verify the PDF actually rendered (non-zero size, expected page count) before calling it done.
 
-6. **Deliver the PDF** to the user (e.g. via `SendUserFile` if available) and briefly summarize what's in it — don't just say "done."
+7. **Deliver the PDF** (e.g. via `SendUserFile`) and summarize what's in it — including what's *not* in it and why, if anything was scoped out.
 
-## Fixed report structure
+## Data honesty — read this before writing any number
 
-Every report uses this skeleton, regardless of type or source. Consistency here is the point — a client who receives several of these should be able to jump straight to "Recommandations" without relearning the layout each time.
+This is the part that actually makes a client trust the report:
 
-1. **Couverture / En-tête** — logo, report title, period, generation date.
-2. **Résumé exécutif** — the headline, in a few sentences.
-3. **Constats & indicateurs clés** — KPI cards + the 2-4 supporting charts.
-4. **Analyse** — the narrative explaining the numbers.
-5. **Recommandations** — concrete, numbered next steps.
-6. **Annexes** *(optional)* — raw tables, methodology, caveats.
+- **Never fabricate a number a source doesn't give you.** No invented margins, no guessed COGS, no placeholder conversion rate. If the user's requested structure needs data you don't have, either get it from them directly, or cut that section, or add it as a `.note.gap` block naming exactly what's missing and why (connector not attached, connector dropped mid-session, needs manual input).
+- **Never compare numbers computed by different methods as if they were the same metric.** The most common trap: a platform's own reported ROAS/revenue (e.g. Meta's `purchase_roas`) runs structurally higher than a third-party attribution tool's number (e.g. Triple Whale) because the attribution windows differ. If an objective was set using one method and you only have the other, show both labeled by source and use `.obj-neutral` — don't render a "+240% objective beaten" that's actually comparing apples to oranges.
+- **State the report's scope up front** when it's narrower than what was originally asked for (e.g. "ce rapport couvre Meta uniquement — Google Ads et Triple Whale ne sont pas connectés") so the reader isn't left assuming silence means zero activity on the missing channel.
+- **Qualitative/contextual content (market research, competitive landscape) is fine and valuable** — just label it as research/context, not as the client's own measured data, and cite sources.
 
-Don't add extra top-level sections (a "Conclusion" that restates the executive summary, a "Contexte" preamble, etc.) — if something needs saying, it belongs inside one of the five sections above. If a report type genuinely needs something structurally different (e.g. an incident report needing a timeline), ask the user before deviating rather than silently changing the skeleton.
+## Report anatomy
 
-## Report-type notes
+A report is a sequence of numbered `.section` blocks (numbering continues across the whole document, not per-channel), with `.divider` blocks marking a shift in subject. There's no fixed section count — build only what the data supports. A typical media-performance report's shape:
 
-- **Business/activité**: KPIs are usually activity volumes, completion rates, or engagement metrics. Analysis should connect movement in the numbers to concrete events (a campaign, a hire, a process change).
-- **Financier**: KPIs are typically revenue, cost, margin, cash position. Always show the comparison basis (vs. budget, vs. prior period) next to each number — a raw figure without a baseline isn't useful in a financial report.
-- **Générique/configurable**: ask the user for their own KPI list and section emphasis up front; the skeleton stays the same, only the KPI/analysis content changes.
+1. **Résultats en un coup d'œil** — KPI row + objective-vs-actual bars (or `.note.gap` if the objective isn't fairly comparable yet).
+2. **Portée de ce rapport** *(when scope is partial)* — one paragraph + gap notes naming what's covered and what's pending.
+3. Per-channel/topic sections, each opened by a `.divider`: what's performing (`.wins`), month-by-month (`.month-grid`), breakdowns (`.tbl`), what's broken (`.fixes`), why (`.diag`), creative-level detail (`.creative-card`) where the data supports it.
+4. **Contexte marché** *(when relevant)* — research-backed context, clearly labeled as external/qualitative.
+5. **Plan d'action** — `.plan-grid`, phased (e.g. urgent/mid-term/growth), each item tied to a specific finding above.
+6. **Ce qu'il manque pour le prochain rapport** *(when anything was scoped out)* — a short, honest list of what needs to happen (connect X, get Y from the client) before the next edition can cover it.
 
-## Branding
-
-`references/brand.json` holds the default look (company name, primary/accent colors, logo path, footer confidentiality line). It ships with sensible neutral defaults. If the user gives you their real brand colors or a logo file, update `references/brand.json` so future reports pick it up automatically — don't just hardcode it into one report's HTML.
+A simple internal recap doesn't need all of this — a KPI row, one or two callout boxes, and a short analysis paragraph can be the whole report. Match the depth to what the user actually asked for and what the data actually supports; don't pad a thin dataset out to look like a full media-performance deep dive.
 
 ## Files in this skill
 
-- `assets/report_template.html` — the HTML/CSS skeleton with print-ready `@page` rules. Copy per report, fill placeholders.
-- `scripts/render_pdf.js` — HTML → PDF via headless Chromium (Playwright). Handles page numbers and margins; don't reimplement this.
-- `references/brand.json` — editable branding defaults (colors, logo, footer text).
+- `assets/report_template.html` — CSS + header/footer skeleton. Copy per report; body is composed from `references/components.md`.
+- `references/components.md` — the block catalog: markup + when to use each one. Read before composing a report.
+- `scripts/render_pdf.js` — HTML → PDF via headless Chromium (Playwright). Don't reimplement this.
+- `references/brand.json` — editable branding (colors, logo, footer text). Update it when the user gives real brand values so future reports pick them up automatically.

@@ -1,163 +1,237 @@
 <!--
-  Custom report template. Copy this file per report, then replace every
-  {{PLACEHOLDER}} below. Read references/brand.json first and set the CSS
-  variables in :root plus the header logo/company name to match.
+  Custom report template — "media performance" variant. Copy this file per
+  report, then replace every {{PLACEHOLDER}} and duplicate/delete the
+  repeating blocks (.kpi, .m-card, .p-card, .creative-card, table rows,
+  <section> blocks) as needed. See SKILL.md for which blocks to use for
+  which report type and section.
 
-  Section order is fixed on purpose (see SKILL.md) — don't add or reorder
-  top-level <section> elements. Delete the #annexes section entirely if
-  there's nothing to append.
+  Color system: only --color-primary (brand ink) and --color-accent (brand
+  highlight) come from references/brand.json — everything else here (green/
+  red/orange/blue) is a FUNCTIONAL status color (good/bad/warning/info,
+  win/loss, urgent/mid/grow), not a brand color. Never repaint those to the
+  brand palette — they carry meaning (success vs problem) that brand color
+  can't.
 -->
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>{{TITLE}}</title>
 <style>
-  :root {
-    --color-primary: {{COLOR_PRIMARY}};   /* e.g. #1B2A4A, from brand.json colors.primary */
-    --color-accent: {{COLOR_ACCENT}};     /* e.g. #2E7DE1, from brand.json colors.accent */
-    --color-text: {{COLOR_TEXT}};         /* e.g. #1A1A1A */
-    --color-muted: {{COLOR_MUTED}};       /* e.g. #6B7280 */
-    --color-positive: {{COLOR_POSITIVE}}; /* e.g. #0F9D58 */
-    --color-negative: {{COLOR_NEGATIVE}}; /* e.g. #D93025 */
-    --font-family: {{FONT_FAMILY}};       /* e.g. 'Helvetica Neue', Arial, sans-serif */
-  }
+:root{
+  --primary:{{COLOR_PRIMARY}};       /* brand ink, e.g. #1A1A1A */
+  --accent:{{COLOR_ACCENT}};         /* brand highlight, e.g. #FFBB10 */
+  --bg:#ffffff;--surface:#f7f7f8;--surface2:#eeeef0;--border:#e0e0e3;
+  --text:#111827;--text2:#4b5563;--muted:#9ca3af;
+  --blue:#2563eb;--blue-light:#eff6ff;
+  --red:#dc2626;--red-bg:#fef2f2;
+  --green:#16a34a;--green-bg:#f0fdf4;
+  --orange:#d97706;--orange-bg:#fffbeb;
+  --font:{{FONT_FAMILY}};
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13.5px;line-height:1.65}
 
-  @page { size: A4; margin: 0; }
+.dl-btn{position:fixed;top:16px;right:20px;z-index:1000;background:var(--primary);color:#fff;font-family:var(--font);font-size:11px;font-weight:700;padding:10px 22px;border:none;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;border-radius:6px}
 
-  * { box-sizing: border-box; }
+.header{background:var(--primary);color:#fff;padding:44px 60px 40px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.header-main{flex:1}
+.header-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.55);margin-bottom:14px}
+.header h1{font-family:var(--font);font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+.header h1 span{color:var(--accent)}
+.header-sub{font-size:13px;color:rgba(255,255,255,.6);max-width:620px}
+.header-meta{margin-top:18px;display:flex;gap:32px;flex-wrap:wrap;font-size:11.5px;color:rgba(255,255,255,.5)}
+.header-meta strong{color:rgba(255,255,255,.9)}
+.header-logo img{max-height:36px;filter:brightness(0) invert(1)} /* logo rendered white on dark header */
 
-  body {
-    font-family: var(--font-family);
-    color: var(--color-text);
-    margin: 0;
-    line-height: 1.5;
-    font-size: 11pt;
-  }
+.container{max-width:1200px;margin:0 auto;padding:40px 60px 64px}
+.section{margin-bottom:44px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid var(--primary)}
+.s-num{font-family:var(--font);font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.s-title{font-family:var(--font);font-size:14px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
 
-  section { padding: 0 0 8mm 0; page-break-inside: avoid; }
-  section + section { page-break-before: auto; }
+.divider{margin:52px 0 8px;padding:14px 0;border-top:3px solid var(--primary);display:flex;align-items:center;gap:12px}
+.divider-icon{font-size:20px}
+.divider h2{font-family:var(--font);font-size:20px;font-weight:700;letter-spacing:-.01em}
+.divider-meta{color:var(--muted);font-weight:600;font-size:12px}
 
-  /* Cover */
-  #cover {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-    page-break-after: always;
-    padding: 20mm 16mm;
-  }
-  #cover .brand-header { display: flex; align-items: center; gap: 12px; }
-  #cover .brand-header img { max-height: 40px; }
-  #cover .brand-header .company-name { font-weight: 600; color: var(--color-primary); font-size: 14pt; }
-  #cover .cover-main { margin-top: auto; margin-bottom: auto; }
-  #cover h1 { font-size: 28pt; color: var(--color-primary); margin: 0 0 6px 0; }
-  #cover .subtitle { font-size: 14pt; color: var(--color-muted); margin: 0 0 24px 0; }
-  #cover .meta { color: var(--color-muted); font-size: 10pt; }
+/* KPI cards */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.kpi-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:var(--surface);border-radius:8px;padding:18px;border:1px solid var(--border)}
+.kpi-label{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.kpi-val{font-family:var(--font);font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.tag{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase}
+.tag-g{background:var(--green-bg);color:var(--green)}
+.tag-r{background:var(--red-bg);color:var(--red)}
+.tag-o{background:var(--orange-bg);color:var(--orange)}
+.tag-b{background:var(--blue-light);color:var(--blue)}
+.tag-neutral{background:var(--surface2);color:var(--text2)}
 
-  h2 {
-    color: var(--color-primary);
-    font-size: 16pt;
-    border-bottom: 2px solid var(--color-accent);
-    padding-bottom: 4px;
-    margin: 0 0 12px 0;
-  }
-  h3 { color: var(--color-primary); font-size: 12.5pt; margin: 16px 0 6px 0; }
+/* Objective vs actual bar — .obj-g when hit/exceeded, .obj-r when missed,
+   .obj-neutral when not directly comparable (e.g. different attribution
+   methodology) — never claim hit/miss on a neutral comparison. */
+.obj-bar{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;font-size:12.5px;margin-top:8px}
+.obj-bar strong{font-weight:600}
+.obj-bar .val{margin-left:auto;font-family:var(--font);font-size:15px;font-weight:700;white-space:nowrap}
+.obj-g{background:var(--green-bg);border:1px solid #bbf7d0}.obj-g .val{color:var(--green)}
+.obj-r{background:var(--red-bg);border:1px solid #fecaca}.obj-r .val{color:var(--red)}
+.obj-neutral{background:var(--surface);border:1px solid var(--border)}.obj-neutral .val{color:var(--text2)}
 
-  .content-section { padding: 10mm 16mm 4mm 16mm; }
+/* Month-by-month grid */
+.month-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.m-card{background:var(--surface);border-radius:8px;padding:20px;border:1px solid var(--border)}
+.m-card.best{border:2px solid var(--green);background:var(--green-bg)}
+.m-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
+.m-label.best-l{color:var(--green)}
+.m-big{font-family:var(--font);font-size:20px;font-weight:700;margin-bottom:12px}
+.m-row{display:flex;justify-content:space-between;padding:5px 0;font-size:12px;border-bottom:1px solid var(--border)}
+.m-row:last-child{border:none}
+.m-key{color:var(--muted)}.m-val{font-weight:600}
+.cg{color:var(--green)}.cr{color:var(--red)}.co{color:var(--orange)}.cb{color:var(--blue)}
 
-  /* KPI cards */
-  .kpi-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
-  .kpi-card {
-    flex: 1 1 0;
-    min-width: 38mm;
-    border: 1px solid #E5E7EB;
-    border-left: 4px solid var(--color-accent);
-    border-radius: 4px;
-    padding: 10px 12px;
-  }
-  .kpi-card .kpi-label { font-size: 8.5pt; color: var(--color-muted); text-transform: uppercase; letter-spacing: 0.03em; }
-  .kpi-card .kpi-value { font-size: 20pt; font-weight: 700; color: var(--color-primary); margin: 2px 0; }
-  .kpi-card .kpi-delta { font-size: 9pt; font-weight: 600; }
-  .kpi-card .kpi-delta.positive { color: var(--color-positive); }
-  .kpi-card .kpi-delta.negative { color: var(--color-negative); }
+/* Tables */
+.tbl{width:100%;border-collapse:collapse;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.tbl thead tr{background:var(--primary);color:#fff}
+.tbl thead th{padding:9px 12px;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;text-align:left}
+.tbl thead th:not(:first-child){text-align:right}
+.tbl tbody tr{border-bottom:1px solid var(--border)}
+.tbl tbody td{padding:9px 12px;font-size:12px}
+.tbl tbody td:not(:first-child){text-align:right}
+.tbl .trow{background:var(--surface2);font-weight:600}
+.tbl .waste{background:var(--red-bg)}
+.tbl .win{background:var(--green-bg)}
 
-  /* Charts */
-  figure { margin: 0 0 14px 0; text-align: center; }
-  figure img { max-width: 100%; }
-  figure figcaption { font-size: 9pt; color: var(--color-muted); margin-top: 4px; }
-  .chart-grid { display: flex; gap: 10px; flex-wrap: wrap; }
-  .chart-grid figure { flex: 1 1 45%; }
+/* Callout boxes — semantic, not brand-colored */
+.wins{background:var(--green-bg);border:1px solid #bbf7d0;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.wins h3{font-family:var(--font);font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px}
+.fixes{background:var(--red-bg);border:1px solid #fecaca;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.fixes h3{font-family:var(--font);font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px}
+.actions{background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.actions h3{font-family:var(--font);font-size:14px;font-weight:700;color:var(--blue);margin-bottom:10px}
+.diag{background:var(--orange-bg);border:1px solid #fde68a;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.diag h3{font-family:var(--font);font-size:14px;font-weight:700;color:var(--orange);margin-bottom:10px}
+.wins ul,.fixes ul,.actions ul,.diag ul{list-style:none;padding:0}
+.wins ul li,.fixes ul li,.actions ul li,.diag ul li{position:relative;padding:5px 0 5px 18px;font-size:12.5px;line-height:1.5}
+.wins ul li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.fixes ul li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:700}
+.actions ul li::before{content:'→';position:absolute;left:0;color:var(--blue);font-weight:700}
+.diag ul li::before{content:'⚡';position:absolute;left:0}
+.wins ul li strong,.fixes ul li strong,.actions ul li strong,.diag ul li strong{font-weight:600}
 
-  table { width: 100%; border-collapse: collapse; margin: 8px 0 16px 0; font-size: 9.5pt; }
-  th, td { border: 1px solid #E5E7EB; padding: 6px 8px; text-align: left; }
-  th { background: #F3F4F6; color: var(--color-primary); }
+.note{font-size:12px;color:var(--text2);padding:12px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--border);margin-top:10px;line-height:1.55}
+.note strong{color:var(--text)}
+.note.gap{background:var(--orange-bg);border-color:#fde68a} /* use for "data not available yet" notes */
 
-  ol, ul { padding-left: 20px; }
-  li { margin-bottom: 6px; }
+/* Phased roadmap */
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.p-card{border-radius:8px;padding:20px;border:1px solid var(--border)}
+.p-card.urgent{background:var(--red-bg);border-color:#fecaca}
+.p-card.mid{background:var(--orange-bg);border-color:#fde68a}
+.p-card.grow{background:var(--green-bg);border-color:#bbf7d0}
+.p-phase{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px}
+.p-title{font-family:var(--font);font-size:14px;font-weight:700;margin-bottom:12px}
+.p-item{padding:4px 0;font-size:12px;color:var(--text2);line-height:1.45;border-bottom:1px solid rgba(0,0,0,.06)}
+.p-item:last-child{border:none}
+.p-item strong{color:var(--text);display:block;font-size:12px}
+.p-target{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.1);font-size:11px;font-weight:600}
+
+/* Creative-level deep dive */
+.creative-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:10px;border-left:3px solid var(--accent)}
+.creative-card h4{font-family:var(--font);font-size:13px;font-weight:700;margin-bottom:10px}
+.creative-card .c-row{display:flex;gap:16px;flex-wrap:wrap}
+.creative-card .c-metric{font-size:11px;color:var(--muted)}
+.creative-card .c-metric strong{color:var(--text);font-size:14px;display:block}
+
+figure{margin:0 0 14px 0;text-align:center}
+figure img{max-width:100%}
+figure figcaption{font-size:9pt;color:var(--muted);margin-top:4px}
+.chart-stack{display:flex;flex-direction:column;gap:10px}
+
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:16px 60px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+
+@page{size:A4;margin:0}
+@media print{
+.dl-btn{display:none!important}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+body{font-size:10px!important}
+.container{padding:8px 22px!important}
+.section{margin-bottom:12px!important}
+.header{padding:14px 22px!important}
+.header h1{font-size:20px!important}
+.header-meta{gap:16px!important;font-size:9.5px!important}
+.footer{padding:6px 22px!important}
+.divider{margin:16px 0 4px!important;padding:8px 0!important}
+.divider h2{font-size:16px!important}
+.kpi-row,.kpi-row-4,.kpi-row-3{gap:4px}
+.month-grid{gap:4px}.plan-grid{gap:4px}
+.kpi{padding:8px 10px}
+.kpi-val{font-size:18px!important}
+.kpi-label{margin-bottom:4px!important;font-size:8px!important}
+.kpi-sub{font-size:9px!important;margin-top:3px!important}
+.section-header{margin-bottom:8px!important;padding-bottom:4px!important}
+.s-title{font-size:12px!important}
+.wins,.fixes,.actions,.diag{padding:10px 14px!important;margin-bottom:4px!important}
+.wins h3,.fixes h3,.actions h3,.diag h3{font-size:11.5px!important;margin-bottom:6px!important}
+.wins ul li,.fixes ul li,.actions ul li,.diag ul li{padding:2px 0 2px 14px!important;font-size:10px!important}
+.obj-bar{padding:6px 10px!important;font-size:10px!important;margin-top:4px!important}
+.obj-bar .val{font-size:11px!important}
+.m-card{padding:10px!important}
+.m-big{font-size:16px!important;margin-bottom:6px!important}
+.m-row{padding:3px 0!important;font-size:9.5px!important}
+.m-label{font-size:8px!important}
+.note{padding:6px 10px!important;font-size:9.5px!important;margin-top:4px!important}
+.tbl thead th{padding:5px 8px!important;font-size:8px!important}
+.tbl tbody td{padding:5px 8px!important;font-size:9.5px!important}
+.p-card{padding:10px!important}
+.p-title{font-size:11px!important;margin-bottom:6px!important}
+.p-item{padding:2px 0!important;font-size:9.5px!important}
+.p-phase{font-size:7px!important}
+.p-target{margin-top:6px!important;padding-top:6px!important;font-size:9px!important}
+.tag{font-size:7px!important;padding:1px 4px!important;margin-top:3px!important}
+.creative-card{padding:10px!important;margin-bottom:4px!important}
+.creative-card h4{font-size:10.5px!important;margin-bottom:6px!important}
+.creative-card .c-metric{font-size:9px!important}
+.creative-card .c-metric strong{font-size:12px!important}
+}
 </style>
 </head>
 <body>
 
-  <section id="cover">
-    <div class="brand-header">
-      {{LOGO_HTML}} <!-- e.g. <img src="logo.png"> if brand.json has a logo, else omit -->
-      <span class="company-name">{{COMPANY_NAME}}</span>
-    </div>
-    <div class="cover-main">
-      <h1>{{TITLE}}</h1>
-      <p class="subtitle">{{SUBTITLE}}</p>
-    </div>
-    <div class="meta">
-      Période : {{PERIOD}}<br>
-      Généré le {{DATE}}
-    </div>
-  </section>
+<button class="dl-btn" onclick="window.print()">⬇ Télécharger PDF</button>
 
-  <section id="executive-summary" class="content-section">
-    <h2>Résumé exécutif</h2>
-    <p>{{EXEC_SUMMARY}}</p>
-  </section>
-
-  <section id="key-findings" class="content-section">
-    <h2>Constats &amp; indicateurs clés</h2>
-    <div class="kpi-row">
-      {{KPI_CARDS}}
-      <!--
-        Repeat per KPI:
-        <div class="kpi-card">
-          <div class="kpi-label">Nom du KPI</div>
-          <div class="kpi-value">123 456</div>
-          <div class="kpi-delta positive">+12% vs période précédente</div>
-        </div>
-      -->
+<div class="header">
+  <div class="header-main">
+    <div class="header-eyebrow">{{EYEBROW}}</div>
+    <h1>{{TITLE_LINE1}}<br><span>{{TITLE_LINE2}}</span></h1>
+    <p class="header-sub">{{HEADER_SUB}}</p>
+    <div class="header-meta">
+      {{HEADER_META_ITEMS}}
+      <!-- Repeat: <span>Label <strong>Value</strong></span> -->
     </div>
-    <div class="chart-grid">
-      {{CHARTS}}
-      <!--
-        Repeat per chart:
-        <figure>
-          <img src="chart_1.png" alt="...">
-          <figcaption>Description courte du graphique</figcaption>
-        </figure>
-      -->
-    </div>
-  </section>
+  </div>
+  <div class="header-logo">{{LOGO_HTML}}</div>
+</div>
 
-  <section id="analysis" class="content-section">
-    <h2>Analyse</h2>
-    {{ANALYSIS}}
-  </section>
+<div class="container">
 
-  <section id="recommendations" class="content-section">
-    <h2>Recommandations</h2>
-    {{RECOMMENDATIONS}}
-  </section>
+  {{SECTIONS}}
+  <!--
+    Compose the body from the blocks documented in SKILL.md:
+    .section (numbered), .divider (channel/phase break), .kpi-row,
+    .obj-bar, .month-grid, .tbl, .wins/.fixes/.actions/.diag, .plan-grid,
+    .creative-card, figure (charts). Delete/duplicate freely — this file
+    ships the CSS, not a fixed skeleton.
+  -->
 
-  <section id="annexes" class="content-section">
-    <h2>Annexes</h2>
-    {{ANNEXES}}
-  </section>
+</div>
+
+<div class="footer">
+  <span>{{FOOTER_LEFT}}</span>
+  <span>{{FOOTER_RIGHT}}</span>
+</div>
 
 </body>
 </html>
