@@ -28,7 +28,7 @@ This skill turns whatever data the user has into a polished, branded PDF report.
    - `{{ANALYSIS}}` — the detailed narrative: what happened, why, what's notable. Use `<h3>` subsections if there's more than one theme.
    - `{{RECOMMENDATIONS}}` — an ordered or bulleted list of concrete next steps, tied back to specific findings above. Skip filler recommendations that don't follow from the data.
    - `{{ANNEXES}}` — optional; delete the whole `<section id="annexes">` block if there's nothing to append (raw data tables, methodology notes).
-   - Branding: read `references/brand.json` for the company name, colors, and logo path, and set the corresponding CSS variables / `<img>` src in the template's `:root`/header. If `brand.json` has no logo configured, fall back to the text wordmark already in the template — don't invent a logo.
+   - Branding: read `references/brand.json` for the company name, colors, and logo path, and set the corresponding CSS variables / `<img>` src in the template's `:root`/header. It already points at TPS Digital Services' real logo and colors (Noir `#1A1A1A`, Jaune `#FFBB10`) — use it as-is unless the user gives you a different one. Since the rendered HTML is opened as a `file://` URL, the `<img src="...">` for the logo must resolve from wherever the working HTML file lives — either copy `assets/logo.png` next to it, or point straight at the skill's absolute path (`.claude/skills/custom-reports/assets/logo.png`). If `logo_path` in `brand.json` is ever null, fall back to the text wordmark already in the template — don't invent a logo.
 
 5. **Render to PDF** with the bundled script — don't hand-roll a PDF pipeline:
    ```bash
