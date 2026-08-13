@@ -1,0 +1,289 @@
+<!--
+  Commercial offer template. Copy this file per offer, replace every
+  {{PLACEHOLDER}}, then compose the body from the blocks documented in
+  references/components.md. This file ships the CSS, not a fixed skeleton —
+  delete and duplicate blocks freely.
+
+  Color system: only --primary (brand ink) and --accent (brand highlight) come
+  from references/brand.json. Everything else (green/red/orange/blue) is a
+  FUNCTIONAL status color — good/bad/warning/info. Never repaint those to the
+  brand palette: in an offer, a red box means "this is costing you money", and
+  brand color can't carry that.
+-->
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>{{TITLE}}</title>
+<style>
+:root{
+  --primary:{{COLOR_PRIMARY}};       /* brand ink, e.g. #1A1A1A */
+  --accent:{{COLOR_ACCENT}};         /* brand highlight, e.g. #FFBB10 */
+  --bg:#ffffff;--surface:#f7f7f8;--surface2:#eeeef0;--border:#e0e0e3;
+  --text:#111827;--text2:#4b5563;--muted:#9ca3af;
+  --blue:#2563eb;--blue-light:#eff6ff;
+  --red:#dc2626;--red-bg:#fef2f2;
+  --green:#16a34a;--green-bg:#f0fdf4;
+  --orange:#d97706;--orange-bg:#fffbeb;
+  --font:{{FONT_FAMILY}};
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13.5px;line-height:1.65}
+.dl-btn{position:fixed;top:16px;right:20px;z-index:1000;background:var(--primary);color:#fff;font-family:var(--font);font-size:11px;font-weight:700;padding:10px 22px;border:none;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;border-radius:6px}
+
+/* ---------- Cover ---------- */
+.cover{background:var(--primary);color:#fff;padding:70px 60px 56px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.cover-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.55);margin-bottom:16px}
+.cover h1{font-size:36px;font-weight:700;letter-spacing:-.025em;line-height:1.08;margin-bottom:12px}
+.cover h1 span{color:var(--accent)}
+.cover-sub{font-size:13.5px;color:rgba(255,255,255,.62);max-width:640px}
+.cover-logo img{max-height:38px;filter:brightness(0) invert(1)}
+.cover-meta{margin-top:34px;display:flex;gap:36px;flex-wrap:wrap;font-size:11.5px;color:rgba(255,255,255,.5)}
+.cover-meta strong{display:block;color:#fff;font-size:13px;font-weight:600;margin-top:2px}
+
+.container{max-width:1200px;margin:0 auto;padding:40px 60px 64px}
+.section{margin-bottom:40px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid var(--primary)}
+.s-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.s-title{font-size:14px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.lead{font-size:14px;color:var(--text2);margin-bottom:16px;max-width:78ch}
+.divider{margin:46px 0 8px;padding:14px 0;border-top:3px solid var(--primary);display:flex;align-items:center;gap:12px}
+.divider-icon{font-size:20px}
+.divider h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.divider-meta{color:var(--muted);font-weight:600;font-size:12px}
+
+/* ---------- KPI row (audit findings) ---------- */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.kpi-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:var(--surface);border-radius:8px;padding:18px;border:1px solid var(--border)}
+.kpi-label{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.kpi-val{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.tag{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase}
+.tag-g{background:var(--green-bg);color:var(--green)}
+.tag-r{background:var(--red-bg);color:var(--red)}
+.tag-o{background:var(--orange-bg);color:var(--orange)}
+.tag-b{background:var(--blue-light);color:var(--blue)}
+.tag-neutral{background:var(--surface2);color:var(--text2)}
+
+/* ---------- Finding: observation -> consequence -> proposal ---------- */
+.finding{border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:16px 20px;margin-bottom:10px;background:var(--surface)}
+.finding .f-obs{font-size:13px;font-weight:600;margin-bottom:6px}
+.finding .f-cost{font-size:12.5px;color:var(--red);font-weight:600;margin-bottom:6px}
+.finding .f-fix{font-size:12.5px;color:var(--text2)}
+.finding .f-fix strong{color:var(--text)}
+.finding .f-src{font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:.02em}
+
+/* ---------- Value highlight ---------- */
+.value-box{background:var(--primary);color:#fff;border-radius:10px;padding:24px 28px;display:flex;align-items:center;gap:28px;margin:14px 0}
+.value-box .v-big{font-size:32px;font-weight:700;color:var(--accent);letter-spacing:-.02em;white-space:nowrap}
+.value-box .v-txt{font-size:13px;color:rgba(255,255,255,.8);line-height:1.5}
+.value-box .v-txt strong{color:#fff}
+
+/* ---------- Tables (scope, scenarios, generic) ---------- */
+.tbl{width:100%;border-collapse:collapse;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.tbl thead tr{background:var(--primary);color:#fff}
+.tbl thead th{padding:9px 12px;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;text-align:left}
+.tbl thead th:not(:first-child){text-align:right}
+.tbl tbody tr{border-bottom:1px solid var(--border)}
+.tbl tbody td{padding:9px 12px;font-size:12px;vertical-align:top}
+.tbl tbody td:not(:first-child){text-align:right}
+.tbl .trow{background:var(--surface2);font-weight:600}
+.tbl .win{background:var(--green-bg)}
+.tbl .waste{background:var(--red-bg)}
+.tbl.tbl-left td:not(:first-child),.tbl.tbl-left th:not(:first-child){text-align:left}
+.cg{color:var(--green)}.cr{color:var(--red)}.co{color:var(--orange)}.cb{color:var(--blue)}
+
+/* ---------- Scope ---------- */
+.scope-tbl td:first-child{font-weight:600;width:26%}
+.scope-tbl .why{color:var(--text2);font-size:11.5px;font-style:italic}
+.excl{background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:16px 20px;margin-top:10px}
+.excl h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.excl ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px}
+.excl li{font-size:12px;color:var(--text2);position:relative;padding-left:14px}
+.excl li::before{content:'—';position:absolute;left:0;color:var(--muted)}
+
+/* ---------- Pricing ---------- */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start}
+.price-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
+.price-card{border:1px solid var(--border);border-radius:10px;padding:22px 20px;background:var(--surface)}
+.price-card.featured{border:2px solid var(--primary);background:#fff;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.price-card.featured::after{content:'RECOMMANDÉ';position:absolute;top:-9px;left:20px;background:var(--accent);color:var(--primary);font-size:8.5px;font-weight:700;letter-spacing:.12em;padding:3px 9px;border-radius:4px}
+.p-name{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+.p-price{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.p-price small{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:4px;white-space:nowrap}
+.p-note{font-size:11px;color:var(--muted);margin-top:6px}
+.p-list{list-style:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.p-list li{font-size:12px;padding:4px 0 4px 16px;position:relative;color:var(--text2);line-height:1.45}
+.p-list li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.p-list li.off{color:var(--muted)}
+.p-list li.off::before{content:'·';color:var(--muted)}
+.price-single{border:2px solid var(--primary);border-radius:10px;padding:24px 26px;display:flex;justify-content:space-between;align-items:center;gap:24px;background:#fff}
+.price-single .ps-main{font-size:30px;font-weight:700;letter-spacing:-.02em}
+.price-single .ps-side{font-size:12px;color:var(--text2);max-width:60%}
+
+/* ---------- Callouts ---------- */
+.wins{background:var(--green-bg);border:1px solid #bbf7d0;border-radius:8px;padding:18px 22px;margin-bottom:10px}
+.wins h3{font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px}
+.fixes{background:var(--red-bg);border:1px solid #fecaca;border-radius:8px;padding:18px 22px;margin-bottom:10px}
+.fixes h3{font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px}
+.actions{background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;padding:18px 22px;margin-bottom:10px}
+.actions h3{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:10px}
+.diag{background:var(--orange-bg);border:1px solid #fde68a;border-radius:8px;padding:18px 22px;margin-bottom:10px}
+.diag h3{font-size:14px;font-weight:700;color:var(--orange);margin-bottom:10px}
+.wins ul,.fixes ul,.actions ul,.diag ul{list-style:none}
+.wins li,.fixes li,.actions li,.diag li{position:relative;padding:5px 0 5px 18px;font-size:12.5px;line-height:1.5}
+.wins li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.fixes li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:700}
+.actions li::before{content:'→';position:absolute;left:0;color:var(--blue);font-weight:700}
+.diag li::before{content:'⚡';position:absolute;left:0}
+
+/* ---------- Notes / assumptions ---------- */
+.note{font-size:12px;color:var(--text2);padding:12px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--border);margin-top:10px;line-height:1.55}
+.note strong{color:var(--text)}
+.note.gap{background:var(--orange-bg);border-color:#fde68a}
+.assumption{font-size:12px;padding:14px 18px;background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;margin-top:10px;line-height:1.55}
+.assumption h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:6px}
+.assumption ul{list-style:none}
+.assumption li{padding:3px 0 3px 14px;position:relative}
+.assumption li::before{content:'·';position:absolute;left:2px;color:var(--blue);font-weight:700}
+
+/* ---------- Timeline / phases ---------- */
+.timeline{border-left:2px solid var(--border);margin-left:8px;padding-left:0}
+.tl-item{position:relative;padding:0 0 20px 26px}
+.tl-item::before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.tl-item:last-child{padding-bottom:0}
+.tl-when{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+.tl-title{font-size:14px;font-weight:700;margin:2px 0 5px}
+.tl-body{font-size:12.5px;color:var(--text2);line-height:1.5}
+.tl-out{font-size:11.5px;color:var(--text);margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+.tl-out strong{color:var(--green)}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.p-card{border-radius:8px;padding:20px;border:1px solid var(--border)}
+.p-card.urgent{background:var(--red-bg);border-color:#fecaca}
+.p-card.mid{background:var(--orange-bg);border-color:#fde68a}
+.p-card.grow{background:var(--green-bg);border-color:#bbf7d0}
+.p-phase{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px}
+.p-title{font-size:14px;font-weight:700;margin-bottom:12px}
+.p-item{padding:4px 0;font-size:12px;color:var(--text2);line-height:1.45;border-bottom:1px solid rgba(0,0,0,.06)}
+.p-item:last-child{border:none}
+.p-item strong{color:var(--text);display:block}
+.p-target{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.1);font-size:11px;font-weight:600}
+
+/* ---------- Terms + signature ---------- */
+.terms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 28px}
+.term{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px}
+.term .t-key{color:var(--muted)}
+.term .t-val{font-weight:600;text-align:right}
+.sign{margin-top:26px;display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.sign-box{border:1px solid var(--border);border-radius:8px;padding:18px 20px 34px;background:var(--surface)}
+.sign-box .sb-role{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
+.sign-box .sb-name{font-size:13px;font-weight:600}
+.sign-box .sb-line{margin-top:30px;border-top:1px solid var(--muted);font-size:10px;color:var(--muted);padding-top:4px}
+
+figure{margin:0 0 14px 0;text-align:center}
+figure img{max-width:100%}
+figure figcaption{font-size:9pt;color:var(--muted);margin-top:4px}
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:16px 60px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.page-break{page-break-before:always}
+.no-break{page-break-inside:avoid}
+
+@page{size:A4;margin:0}
+@media print{
+.dl-btn{display:none!important}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+body{font-size:10px!important}
+.container{padding:10px 22px!important}
+.section{margin-bottom:14px!important}
+.cover{padding:26px 22px!important;min-height:0!important}
+.cover h1{font-size:24px!important}
+.cover-meta{margin-top:16px!important;gap:20px!important;font-size:9.5px!important}
+.cover-sub{font-size:11px!important}
+.footer{padding:6px 22px!important}
+.divider{margin:16px 0 4px!important;padding:8px 0!important}
+.divider h2{font-size:16px!important}
+.kpi-row,.kpi-row-4,.kpi-row-3,.plan-grid,.price-grid,.price-grid-2{gap:5px}
+.kpi{padding:8px 10px}
+.kpi-val{font-size:17px!important}
+.kpi-label{margin-bottom:4px!important;font-size:8px!important}
+.kpi-sub{font-size:9px!important;margin-top:3px!important}
+.section-header{margin-bottom:8px!important;padding-bottom:4px!important}
+.s-title{font-size:12px!important}
+.lead{font-size:10.5px!important;margin-bottom:8px!important}
+.finding{padding:8px 12px!important;margin-bottom:5px!important}
+.finding .f-obs{font-size:10.5px!important}
+.finding .f-cost,.finding .f-fix{font-size:10px!important}
+.finding .f-src{font-size:8px!important;margin-top:4px!important}
+.value-box{padding:12px 16px!important;gap:16px!important;margin:8px 0!important}
+.value-box .v-big{font-size:22px!important}
+.value-box .v-txt{font-size:10px!important}
+.wins,.fixes,.actions,.diag{padding:10px 14px!important;margin-bottom:5px!important}
+.wins h3,.fixes h3,.actions h3,.diag h3{font-size:11.5px!important;margin-bottom:6px!important}
+.wins li,.fixes li,.actions li,.diag li{padding:2px 0 2px 14px!important;font-size:10px!important}
+.note,.assumption{padding:7px 11px!important;font-size:9.5px!important;margin-top:5px!important}
+.tbl thead th{padding:5px 8px!important;font-size:8px!important}
+.tbl tbody td{padding:5px 8px!important;font-size:9.5px!important}
+.excl{padding:9px 12px!important}
+.excl li{font-size:9.5px!important}
+.price-card{padding:12px 14px!important}
+.p-price{font-size:20px!important}
+.p-name{font-size:9.5px!important;margin-bottom:6px!important}
+.p-list{margin-top:8px!important;padding-top:8px!important}
+.p-list li{font-size:9.5px!important;padding:2px 0 2px 13px!important}
+.price-single{padding:12px 16px!important}
+.price-single .ps-main{font-size:20px!important}
+.tl-item{padding:0 0 11px 20px!important}
+.tl-title{font-size:11px!important}
+.tl-body,.tl-out{font-size:9.5px!important}
+.tl-when{font-size:8px!important}
+.p-card{padding:10px!important}
+.p-title{font-size:11px!important;margin-bottom:6px!important}
+.p-item{padding:2px 0!important;font-size:9.5px!important}
+.term{padding:5px 0!important;font-size:9.5px!important}
+.sign{margin-top:14px!important;gap:24px!important}
+.sign-box{padding:11px 13px 22px!important}
+.tag{font-size:7px!important;padding:1px 4px!important;margin-top:3px!important}
+}
+</style>
+</head>
+<body>
+
+<button class="dl-btn" onclick="window.print()">⬇ Télécharger PDF</button>
+
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-eyebrow">{{EYEBROW}}</div>
+      <h1>{{TITLE_LINE1}}<br><span>{{TITLE_LINE2}}</span></h1>
+      <p class="cover-sub">{{COVER_SUB}}</p>
+    </div>
+    <div class="cover-logo">{{LOGO_HTML}}</div>
+  </div>
+  <div class="cover-meta">
+    {{COVER_META_ITEMS}}
+    <!-- Repeat: <span>Préparé pour<strong>Client</strong></span> -->
+  </div>
+</div>
+
+<div class="container">
+
+  {{SECTIONS}}
+  <!--
+    Compose from references/components.md:
+    .section (numbered) · .lead · .kpi-row · .finding · .value-box ·
+    .scope-tbl + .excl · .price-grid / .price-single · .tbl (scenarios) ·
+    .timeline · .assumption · .note.gap · .wins/.fixes/.actions/.diag ·
+    .terms-grid · .sign
+  -->
+
+</div>
+
+<div class="footer">
+  <span>{{FOOTER_LEFT}}</span>
+  <span>{{FOOTER_RIGHT}}</span>
+</div>
+
+</body>
+</html>

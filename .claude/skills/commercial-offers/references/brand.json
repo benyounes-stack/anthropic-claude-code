@@ -1,0 +1,17 @@
+{
+  "company_name": "TPS Digital Services",
+  "logo_path": "assets/logo.png",
+  "colors": {
+    "primary": "#1A1A1A",
+    "accent": "#FFBB10",
+    "text": "#1A1A1A",
+    "muted": "#6B7280",
+    "background": "#FFFFFF",
+    "background_alt": "#F2F2F2",
+    "kpi_positive": "#0F9D58",
+    "kpi_negative": "#D93025"
+  },
+  "font_family": "'Space Grotesk', 'Helvetica Neue', Arial, sans-serif",
+  "footer_text": "Document confidentiel — usage client uniquement",
+  "notes": "Official TPS Digital Services branding (Charte Graphique / BrandingPresentation V3.0, Drive folder 'Branding'). Noir #1A1A1A and Jaune #FFBB10 are the two brand colors; Blanc #FFFFFF and Gris #F2F2F2 are the neutral backgrounds. Typeface is Space Grotesk — falls back to a system sans-serif if not installed on the machine rendering the PDF. kpi_positive/kpi_negative aren't part of the brand palette (it has no red/green); they stay as generic delta indicators unless the client specifies otherwise. logo.png is 'LogoMark-Dark' (dark logo, for use on light backgrounds) from the Drive Logo Mark/PNG folder — swap in LogoMark-White.png instead if a dark report background is ever used."
+}

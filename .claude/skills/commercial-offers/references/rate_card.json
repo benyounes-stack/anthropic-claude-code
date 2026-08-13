@@ -1,0 +1,78 @@
+{
+  "_status": "unconfigured",
+  "_instructions": [
+    "This file holds TPS Digital Services' OWN prices. Every value is null until the user provides real numbers.",
+    "Never invent a price to fill a gap: ask the user, then write their answer here so the next offer reuses it.",
+    "Nulls are fine to leave in place — only fill the lines the agency actually sells.",
+    "When the user gives a price, also set _status to 'configured' and update _last_updated.",
+    "Prices are entered excluding tax and in default_currency; convert once, explicitly, when quoting another currency."
+  ],
+  "_last_updated": null,
+  "default_currency": "CAD",
+  "also_quotes_in": ["EUR", "USD"],
+
+  "retainers_monthly": {
+    "_note": "Typical monthly fee per depth of engagement. Tiers map to the Essentiel/Croissance/Performance options in pricing.md.",
+    "essentiel": null,
+    "croissance": null,
+    "performance": null,
+    "minimum_acceptable": null
+  },
+
+  "spend_based": {
+    "_note": "Used when the fee is indexed on media budget.",
+    "percent_of_spend": null,
+    "monthly_floor": null,
+    "monthly_ceiling": null
+  },
+
+  "performance_component": {
+    "_note": "Percent of INCREMENTAL revenue above an explicitly defined baseline. Always capped — see pricing.md.",
+    "percent_of_incremental_revenue": null,
+    "monthly_cap": null,
+    "baseline_definition": null
+  },
+
+  "projects": {
+    "audit_compte": null,
+    "audit_complet_multi_canal": null,
+    "restructuration_compte": null,
+    "setup_tracking_capi": null,
+    "setup_triple_whale": null,
+    "batch_creatif": null,
+    "landing_page": null,
+    "setup_crm_flows": null,
+    "preparation_q4": null
+  },
+
+  "unit_rates": {
+    "_note": "Per-unit prices for scope lines quoted by volume.",
+    "creative_static": null,
+    "creative_video_ugc": null,
+    "email_flow": null,
+    "email_campaign": null,
+    "hourly_consulting": null,
+    "day_rate_workshop": null
+  },
+
+  "onboarding": {
+    "setup_fee": null,
+    "waived_if_commitment_months": null
+  },
+
+  "commitment_discounts": {
+    "_note": "Discount on the monthly fee in exchange for commitment length. Keep modest — see pricing.md.",
+    "monthly_no_commitment": 0,
+    "three_months": null,
+    "six_months": null,
+    "twelve_months": null
+  },
+
+  "terms": {
+    "payment_terms": null,
+    "notice_period": null,
+    "offer_validity_days": 30,
+    "media_budget_billing": null,
+    "_note_media_budget_billing": "State explicitly whether ad spend is paid by the client directly to the platform or advanced by the agency and re-invoiced — the single most common billing dispute."
+  }
+}
