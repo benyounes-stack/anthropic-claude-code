@@ -1,0 +1,16 @@
+.env
+config/sites.yaml
+data/
+out/
+models/
+
+# Images de calibration : à supprimer après usage, jamais versionnées.
+*.jpg
+*.jpeg
+*.png
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/

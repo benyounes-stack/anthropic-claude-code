@@ -1,0 +1,40 @@
+# Déploiement sur site. À lancer depuis le répertoire `dahua-workforce/`.
+#
+# Les secrets viennent d'un fichier `.env` non versionné, à côté de ce fichier :
+#   CAM_LIGNE_A_PASSWORD=...
+#   CAM_LIGNE_B_PASSWORD=...
+#   WHATSAPP_PHONE_NUMBER_ID=...
+#   WHATSAPP_ACCESS_TOKEN=...
+
+x-common: &common
+  build: .
+  env_file: .env
+  environment:
+    TZ: Africa/Algiers
+  volumes:
+    - ./config:/app/config:ro
+    - ./models:/app/models:ro
+    - ./data:/app/data
+    - ./out:/app/out
+    # La skill custom-reports fournit le gabarit, la charte et le rendu PDF.
+    - ../.claude/skills/custom-reports:/app/.claude/skills/custom-reports:ro
+
+services:
+  # Service continu : échantillonne les caméras pendant les quarts déclarés.
+  collector:
+    <<: *common
+    container_name: workforce-collector
+    command: ["--config", "config/sites.yaml", "collect"]
+    restart: unless-stopped
+
+  # Tâche à la demande, à déclencher en fin de quart depuis la crontab de l'hôte :
+  #
+  #   0 15 * * 0-4  cd /opt/dahua-workforce && docker compose run --rm reporter
+  #
+  # (15h00 du dimanche au jeudi = fin du quart du matin.)
+  reporter:
+    <<: *common
+    container_name: workforce-reporter
+    command: ["--config", "config/sites.yaml", "send"]
+    profiles: ["manual"]
+    restart: "no"

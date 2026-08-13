@@ -1,0 +1,8 @@
+httpx>=0.27
+PyYAML>=6.0
+numpy>=1.26
+
+# Détection de personnes — nécessaire en production, optionnel pour valider
+# le pipeline en mode NullDetector.
+onnxruntime>=1.17
+pillow>=10.0

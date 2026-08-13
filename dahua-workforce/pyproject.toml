@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dahua-workforce"
+version = "0.1.0"
+description = "Suivi d'occupation des postes de travail sur caméras Dahua, avec rapport de fin de journée WhatsApp"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "PyYAML>=6.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+# Détection de personnes. Séparé du cœur : le pipeline (collecte, rapport,
+# envoi) se valide sans modèle, en NullDetector.
+detect = [
+    "onnxruntime>=1.17",
+    "pillow>=10.0",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+workforce = "workforce.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

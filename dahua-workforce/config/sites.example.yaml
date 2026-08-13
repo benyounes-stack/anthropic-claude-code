@@ -1,0 +1,108 @@
+# Configuration d'exemple — copier en `config/sites.yaml` puis adapter.
+#
+# Les mots de passe et le token Meta ne doivent PAS figurer ici : utiliser
+# `${VARIABLE}`, résolu depuis l'environnement au chargement.
+
+database_path: data/workforce.db
+
+# Un échantillon toutes les 15 s : suffisant pour mesurer une occupation de
+# poste, assez léger pour tourner sur un mini-PC sans GPU.
+sample_interval_seconds: 15
+
+# Durée de conservation des échantillons (aucune image n'est stockée).
+# À aligner sur la durée déclarée dans votre registre des traitements.
+retention_days: 90
+
+detector:
+  # Modèle YOLO exporté en ONNX. Non fourni dans ce dépôt :
+  #   pip install ultralytics && yolo export model=yolov8n.pt format=onnx imgsz=640
+  # Laisser vide pour tourner en mode NullDetector (validation du pipeline).
+  model_path: models/yolov8n.onnx
+  confidence: 0.35
+  nms_iou: 0.45
+  input_size: 640
+
+sites:
+  - id: usine-01
+    label: Usine — Ligne de production
+    timezone: Africa/Algiers
+
+    shifts:
+      - id: matin
+        label: Quart du matin
+        start: "07:00"
+        end: "15:00"
+        weekdays: [6, 0, 1, 2, 3]   # dimanche → jeudi (semaine ouvrable en Algérie)
+      - id: apres-midi
+        label: Quart d'après-midi
+        start: "15:00"
+        end: "23:00"
+        weekdays: [6, 0, 1, 2, 3]
+      # Quart de nuit : `end` < `start` signifie « se termine le lendemain ».
+      # - id: nuit
+      #   label: Quart de nuit
+      #   start: "23:00"
+      #   end: "07:00"
+      #   weekdays: [6, 0, 1, 2, 3]
+
+    cameras:
+      - id: cam-ligne-a
+        host: 192.168.1.101
+        username: workforce          # compte dédié, lecture seule
+        password: ${CAM_LIGNE_A_PASSWORD}
+        port: 80
+        channel: 1                   # 1 pour une caméra IP ; le n° de canal sur un NVR
+
+        # Chaque zone est un poste de travail, en coordonnées NORMALISÉES (0.0–1.0).
+        # Utiliser `workforce calibrate --camera cam-ligne-a` pour obtenir une image
+        # de référence, puis diviser chaque pixel par la largeur/hauteur de l'image.
+        zones:
+          - id: poste-01
+            label: Poste 1 — Presse
+            expected_headcount: 1
+            max_idle_minutes: 10
+            polygon:
+              - [0.05, 0.55]
+              - [0.28, 0.55]
+              - [0.31, 0.95]
+              - [0.02, 0.95]
+
+          - id: poste-02
+            label: Poste 2 — Assemblage
+            expected_headcount: 2      # poste tenu à deux
+            max_idle_minutes: 15
+            polygon:
+              - [0.33, 0.52]
+              - [0.61, 0.52]
+              - [0.64, 0.95]
+              - [0.30, 0.95]
+
+      - id: cam-ligne-b
+        host: 192.168.1.102
+        username: workforce
+        password: ${CAM_LIGNE_B_PASSWORD}
+        channel: 1
+        zones:
+          - id: poste-03
+            label: Poste 3 — Contrôle qualité
+            expected_headcount: 1
+            max_idle_minutes: 20       # poste mobile par nature, seuil plus large
+            polygon:
+              - [0.20, 0.45]
+              - [0.75, 0.45]
+              - [0.80, 0.92]
+              - [0.15, 0.92]
+
+whatsapp:
+  phone_number_id: ${WHATSAPP_PHONE_NUMBER_ID}
+  access_token: ${WHATSAPP_ACCESS_TOKEN}
+  # Format international sans « + » ni espaces (ex. 213 pour l'Algérie).
+  recipients:
+    - "213XXXXXXXXX"
+  template_name: rapport_fin_de_journee
+  language_code: fr
+  graph_version: v23.0
+  # ⚠️ Laisser à false. Passer à true met des données personnelles dans un
+  # message qui transite par les serveurs Meta, hors d'Algérie — transfert
+  # transfrontalier à encadrer (loi 25-11). Voir README, section Conformité.
+  include_employee_names: false
