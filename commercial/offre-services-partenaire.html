@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>TPS Digital Services — Offre de services & grille tarifaire partenaire</title>
+<style>
+:root{
+  --primary:#1A1A1A;
+  --accent:#FFBB10;
+  --bg:#ffffff;--surface:#f7f7f8;--surface2:#eeeef0;--border:#e0e0e3;
+  --text:#111827;--text2:#4b5563;--muted:#9ca3af;
+  --blue:#2563eb;--blue-light:#eff6ff;
+  --red:#dc2626;--red-bg:#fef2f2;
+  --green:#16a34a;--green-bg:#f0fdf4;
+  --orange:#d97706;--orange-bg:#fffbeb;
+  --font:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:13.5px;line-height:1.65}
+
+.dl-btn{position:fixed;top:16px;right:20px;z-index:1000;background:var(--primary);color:#fff;font-family:var(--font);font-size:11px;font-weight:700;padding:10px 22px;border:none;cursor:pointer;letter-spacing:.06em;text-transform:uppercase;border-radius:6px}
+
+.header{background:var(--primary);color:#fff;padding:44px 60px 40px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.header-main{flex:1}
+.header-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.55);margin-bottom:14px}
+.header h1{font-size:32px;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+.header h1 span{color:var(--accent)}
+.header-sub{font-size:13px;color:rgba(255,255,255,.6);max-width:640px}
+.header-meta{margin-top:18px;display:flex;gap:32px;flex-wrap:wrap;font-size:11.5px;color:rgba(255,255,255,.5)}
+.header-meta strong{color:rgba(255,255,255,.9)}
+.header-logo img{max-height:36px;filter:brightness(0) invert(1)}
+
+.container{max-width:1200px;margin:0 auto;padding:40px 60px 64px}
+.section{margin-bottom:38px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--primary)}
+.s-num{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em}
+.s-title{font-size:14px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+p.lead{font-size:13px;color:var(--text2);margin-bottom:12px;max-width:900px}
+p.lead strong{color:var(--text)}
+
+.divider{margin:46px 0 8px;padding:14px 0;border-top:3px solid var(--primary);display:flex;align-items:baseline;gap:12px}
+.divider h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.divider-meta{color:var(--muted);font-weight:600;font-size:12px}
+
+.kpi-row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:var(--surface);border-radius:8px;padding:18px;border:1px solid var(--border)}
+.kpi-label{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px}
+.kpi-val{font-size:24px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.tag{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase}
+.tag-g{background:var(--green-bg);color:var(--green)}
+.tag-b{background:var(--blue-light);color:var(--blue)}
+.tag-o{background:var(--orange-bg);color:var(--orange)}
+.tag-neutral{background:var(--surface2);color:var(--text2)}
+
+/* Service card */
+.svc{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.svc-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.svc-head h4{font-size:14px;font-weight:700}
+.svc-price{font-size:17px;font-weight:700;white-space:nowrap}
+.svc-price small{display:block;font-size:10px;font-weight:600;color:var(--muted);text-align:right;text-transform:uppercase;letter-spacing:.08em}
+.svc p{font-size:12.5px;color:var(--text2);margin-bottom:8px}
+.svc ul{list-style:none;padding:0}
+.svc ul li{position:relative;padding:3px 0 3px 16px;font-size:12px;line-height:1.5;color:var(--text2)}
+.svc ul li::before{content:'—';position:absolute;left:0;color:var(--accent);font-weight:700}
+.svc ul li strong{color:var(--text);font-weight:600}
+.svc-for{margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:11.5px;color:var(--text2)}
+.svc-for strong{color:var(--text)}
+
+.tbl{width:100%;border-collapse:collapse;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.tbl thead tr{background:var(--primary);color:#fff}
+.tbl thead th{padding:9px 12px;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;text-align:left}
+.tbl thead th:not(:first-child){text-align:right}
+.tbl tbody tr{border-bottom:1px solid var(--border)}
+.tbl tbody td{padding:9px 12px;font-size:12px}
+.tbl tbody td:not(:first-child){text-align:right}
+.tbl .trow{background:var(--surface2);font-weight:700}
+.tbl .grp td{background:var(--primary);color:#fff;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:6px 12px}
+.tbl td.l{text-align:left!important}
+
+.wins{background:var(--green-bg);border:1px solid #bbf7d0;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.wins h3{font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px}
+.fixes{background:var(--red-bg);border:1px solid #fecaca;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.fixes h3{font-size:14px;font-weight:700;color:var(--red);margin-bottom:10px}
+.actions{background:var(--blue-light);border:1px solid #bfdbfe;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.actions h3{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:10px}
+.diag{background:var(--orange-bg);border:1px solid #fde68a;border-radius:8px;padding:20px 22px;margin-bottom:10px}
+.diag h3{font-size:14px;font-weight:700;color:var(--orange);margin-bottom:10px}
+.wins ul,.fixes ul,.actions ul,.diag ul{list-style:none;padding:0}
+.wins ul li,.fixes ul li,.actions ul li,.diag ul li{position:relative;padding:5px 0 5px 18px;font-size:12.5px;line-height:1.5}
+.wins ul li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.fixes ul li::before{content:'✗';position:absolute;left:0;color:var(--red);font-weight:700}
+.actions ul li::before{content:'→';position:absolute;left:0;color:var(--blue);font-weight:700}
+.diag ul li::before{content:'⚡';position:absolute;left:0}
+.wins ul li strong,.fixes ul li strong,.actions ul li strong,.diag ul li strong{font-weight:600}
+
+.note{font-size:12px;color:var(--text2);padding:12px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--border);margin-top:10px;line-height:1.55}
+.note strong{color:var(--text)}
+.note.gap{background:var(--orange-bg);border-color:#fde68a}
+
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.p-card{border-radius:8px;padding:20px;border:1px solid var(--border);background:var(--surface)}
+.p-card.hi{border:2px solid var(--accent)}
+.p-phase{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin-bottom:5px;color:var(--muted)}
+.p-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.p-price{font-size:20px;font-weight:700;margin-bottom:12px}
+.p-price small{font-size:11px;font-weight:600;color:var(--muted)}
+.p-item{padding:4px 0;font-size:11.5px;color:var(--text2);line-height:1.45;border-bottom:1px solid rgba(0,0,0,.06)}
+.p-item:last-child{border:none}
+.p-target{margin-top:12px;padding-top:10px;border-top:1px solid rgba(0,0,0,.1);font-size:11px;font-weight:600}
+
+.qa{border-left:2px solid var(--border);padding-left:16px;margin-bottom:14px}
+.qa h4{font-size:12.5px;font-weight:700;margin-bottom:4px}
+.qa p{font-size:12px;color:var(--text2)}
+
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px}
+.step-n{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.1em;margin-bottom:6px}
+.step h4{font-size:12px;font-weight:700;margin-bottom:5px}
+.step p{font-size:11px;color:var(--text2);line-height:1.45}
+
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:16px 60px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+
+@page{size:A4;margin:0}
+@media print{
+.dl-btn{display:none!important}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+body{font-size:10px!important}
+.container{padding:8px 22px!important}
+.section{margin-bottom:13px!important;page-break-inside:avoid}
+.header{padding:14px 22px!important}
+.header h1{font-size:20px!important}
+.header-sub{font-size:10px!important}
+.header-meta{gap:16px!important;font-size:9px!important;margin-top:10px!important}
+.footer{padding:6px 22px!important}
+.divider{margin:14px 0 4px!important;padding:8px 0!important}
+.divider h2{font-size:15px!important}
+.kpi-row-4,.kpi-row-3{gap:4px}
+.plan-grid{gap:4px}.steps{gap:4px}
+.kpi{padding:8px 10px}
+.kpi-val{font-size:17px!important}
+.kpi-label{margin-bottom:4px!important;font-size:8px!important}
+.kpi-sub{font-size:8.5px!important;margin-top:3px!important}
+.section-header{margin-bottom:7px!important;padding-bottom:4px!important}
+.s-title{font-size:11.5px!important}
+p.lead{font-size:10px!important;margin-bottom:7px!important}
+.svc{padding:9px 12px!important;margin-bottom:5px!important;page-break-inside:avoid}
+.svc-head{margin-bottom:5px!important}
+.svc-head h4{font-size:11px!important}
+.svc-price{font-size:13px!important}
+.svc-price small{font-size:7.5px!important}
+.svc p{font-size:9.5px!important;margin-bottom:5px!important}
+.svc ul li{padding:1.5px 0 1.5px 13px!important;font-size:9.5px!important}
+.svc-for{margin-top:6px!important;padding-top:5px!important;font-size:9px!important}
+.wins,.fixes,.actions,.diag{padding:10px 14px!important;margin-bottom:4px!important;page-break-inside:avoid}
+.wins h3,.fixes h3,.actions h3,.diag h3{font-size:11px!important;margin-bottom:6px!important}
+.wins ul li,.fixes ul li,.actions ul li,.diag ul li{padding:2px 0 2px 14px!important;font-size:9.5px!important}
+.note{padding:6px 10px!important;font-size:9px!important;margin-top:4px!important}
+.tbl{page-break-inside:auto}
+.tbl thead th{padding:5px 8px!important;font-size:8px!important}
+.tbl tbody td{padding:4px 8px!important;font-size:9.5px!important}
+.tbl .grp td{padding:4px 8px!important;font-size:8px!important}
+.p-card{padding:10px!important}
+.p-title{font-size:12px!important}
+.p-price{font-size:15px!important;margin-bottom:6px!important}
+.p-item{padding:2px 0!important;font-size:9px!important}
+.p-phase{font-size:7px!important}
+.p-target{margin-top:6px!important;padding-top:6px!important;font-size:9px!important}
+.tag{font-size:7px!important;padding:1px 4px!important;margin-top:3px!important}
+.qa{margin-bottom:7px!important;padding-left:10px!important}
+.qa h4{font-size:10px!important}
+.qa p{font-size:9.5px!important}
+.step{padding:8px!important}
+.step h4{font-size:9.5px!important}
+.step p{font-size:8.5px!important}
+.step-n{font-size:8px!important;margin-bottom:3px!important}
+}
+</style>
+</head>
+<body>
+
+<button class="dl-btn" onclick="window.print()">⬇ Télécharger PDF</button>
+
+<div class="header">
+  <div class="header-main">
+    <div class="header-eyebrow">Kit de vente — Partenaire commercial</div>
+    <h1>Offre de services<br><span>& grille tarifaire</span></h1>
+    <p class="header-sub">Document de référence remis aux partenaires commerciaux mandatés pour représenter TPS Digital Services. Il contient la description des prestations vendables, les prix de référence, les forfaits packagés et la structure de rémunération partenaire.</p>
+    <div class="header-meta">
+      <span>Émetteur <strong>TPS Digital Services — 9495-4872 Québec Inc.</strong></span>
+      <span>Version <strong>1.0</strong></span>
+      <span>Devise <strong>CAD, taxes en sus</strong></span>
+      <span>Statut <strong>Confidentiel</strong></span>
+    </div>
+  </div>
+  <div class="header-logo"><img src="logo.png" alt="TPS Digital Services"></div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">01</span><span class="s-title">Ce que vend TPS Digital Services</span></div>
+    <p class="lead">TPS Digital Services est une agence d'acquisition et d'infrastructure numérique basée au Québec. Nous ne vendons pas « du marketing » : nous vendons des <strong>systèmes qui génèrent et traitent de la demande</strong> — la publicité qui amène le trafic, le créatif qui le convertit, le tunnel et le CRM qui le capturent, et les automatisations qui font tourner l'opération sans embaucher.</p>
+    <p class="lead">Cinq lignes de services, vendables séparément ou en forfait. Un client type démarre par une seule ligne (souvent la publicité ou le site web) et en ajoute d'autres dans les 6 à 12 mois suivants.</p>
+    <div class="kpi-row-3" style="margin-top:14px">
+      <div class="kpi"><div class="kpi-label">Ticket d'entrée</div><div class="kpi-val">3 500 $</div><div class="kpi-sub">Forfait Lancement — mandat ponctuel</div></div>
+      <div class="kpi"><div class="kpi-label">Mandat moyen</div><div class="kpi-val">9 000 $</div><div class="kpi-sub">Setup complet ou refonte web</div></div>
+      <div class="kpi"><div class="kpi-label">Récurrent mensuel</div><div class="kpi-val">3 200 – 6 000 $</div><div class="kpi-sub">Retainer gestion ou Tech Ops</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">02</span><span class="s-title">Preuve de résultats — argument de vente principal</span></div>
+    <p class="lead">Référence e-commerce (produits de collection, Québec) accompagnée depuis mars 2024 en gestion Meta Ads et production créative. Chiffres réels, attribution pixel Meta.</p>
+    <table class="tbl">
+      <thead><tr><th>Indicateur</th><th>2024 (10 mois)</th><th>2025 (12 mois)</th><th>Évolution</th></tr></thead>
+      <tbody>
+        <tr><td class="l">Budget publicitaire géré</td><td>42 415 $</td><td>170 232 $</td><td>+401 %</td></tr>
+        <tr><td class="l">Revenus attribués</td><td>567 691 $</td><td>3 133 123 $</td><td>+552 %</td></tr>
+        <tr><td class="l">Conversions</td><td>1 585</td><td>5 454</td><td>+344 %</td></tr>
+        <tr><td class="l">ROAS moyen</td><td>10,98</td><td>19,38</td><td>+77 %</td></tr>
+        <tr class="trow"><td class="l">Cumulatif 2024–2025</td><td>212 648 $ investis</td><td>3 700 814 $ générés</td><td>ROAS 17,40</td></tr>
+      </tbody>
+    </table>
+    <div class="note gap"><strong>Règle d'usage :</strong> ces chiffres se présentent de façon anonymisée (« un client e-commerce québécois »). Le nom du client ne peut être divulgué qu'après accord écrit de TPS — le contrat en vigueur contient une clause de confidentialité avec pénalité. Ne jamais promettre un ROAS chiffré à un prospect : ces résultats illustrent une exécution passée, ils ne constituent pas une garantie de performance.</div>
+  </div>
+
+  <div class="divider"><h2>Les cinq lignes de services</h2><span class="divider-meta">Description &amp; prix de référence</span></div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">03</span><span class="s-title">Ligne 1 — Acquisition payante (Meta Ads)</span></div>
+    <p class="lead">Gestion complète de la publicité Meta (Facebook / Instagram) : structure de compte, achat média, optimisation continue et allocation budgétaire. C'est la ligne la plus rentable à vendre et celle qui ouvre le plus souvent la porte aux autres.</p>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Setup Meta Ads complet</h4><div class="svc-price">2 500 $<small>Mandat ponctuel</small></div></div>
+      <p>Installation de toute l'infrastructure publicitaire, prête à diffuser. Vendable seul à un client qui gérera ensuite lui-même ses campagnes.</p>
+      <ul>
+        <li>Paramétrage du <strong>Business Manager</strong>, du pixel et des événements de conversion</li>
+        <li>Vérification du domaine, API de conversion et suivi des ventes</li>
+        <li>Création d'une <strong>structure de campagnes</strong> performante (audiences, budgets, placements)</li>
+      </ul>
+      <div class="svc-for"><strong>Pour qui :</strong> entreprise qui démarre en publicité, ou compte existant mal configuré (tracking cassé, pixel non vérifié, structure anarchique).</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Onboarding stratégique</h4><div class="svc-price">500 $<small>Mandat ponctuel</small></div></div>
+      <p>Session de stratégie avec la direction TPS : offre, positionnement, angles marketing, cible, budget recommandé et plan de test. Se vend en complément d'un setup ou comme premier pas à faible engagement.</p>
+      <div class="svc-for"><strong>Astuce de vente :</strong> excellent produit d'appel — un prospect hésitant accepte souvent 500 $ de stratégie avant 3 000 $ d'exécution.</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Gestion publicitaire continue — retainer</h4><div class="svc-price">à partir de 3 200 $<small>par mois</small></div></div>
+      <p>TPS devient le centre de commandement média du client. Le retainer est un budget d'opérations global (accès prioritaire aux ressources, stratégie, achat média, direction créative), pas une facturation horaire.</p>
+      <ul>
+        <li>Structure, gestion et <strong>optimisation continue</strong> des campagnes (CPA, ROAS, performance blended)</li>
+        <li>Gestion des audiences, budgets et placements ; recommandations d'allocation</li>
+        <li><strong>Production créative incluse</strong> : statiques, vidéos, tests d'angles et de hooks</li>
+        <li><strong>Rapport de performance mensuel</strong> avec analyse d'attribution</li>
+      </ul>
+      <div class="svc-for"><strong>Fourchette :</strong> 3 200 $/mois pour un mandat centré Meta + créatif ; jusqu'à 6 000 $/mois et plus dès qu'on ajoute des canaux, des systèmes ou un volume créatif élevé. <strong>Engagement minimum : 3 mois</strong>, payable le 1<sup>er</sup> du mois à l'avance.</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Partage de revenus (option hybride)</h4><div class="svc-price">2 – 2,5 %<small>du revenu net marketing</small></div></div>
+      <p>S'ajoute au retainer — ne le remplace jamais. Calculé mensuellement sur le <strong>Revenu Net Marketing</strong> (ventes attribuées aux canaux gérés par TPS, moins les dépenses média), avec attribution mesurée par un outil tiers indépendant (Triple Whale) plutôt que par le pixel de la plateforme.</p>
+      <ul>
+        <li>ROAS inférieur à 15× → <strong>2,0 %</strong> du revenu net marketing</li>
+        <li>ROAS égal ou supérieur à 15× → <strong>2,5 %</strong></li>
+        <li>Revenu net nul ou négatif → aucun partage facturé ce mois-là</li>
+      </ul>
+      <div class="svc-for"><strong>Argument :</strong> c'est le modèle le plus facile à faire accepter — TPS se rémunère davantage seulement quand le client gagne davantage, et l'attribution est mesurée par un tiers, pas par TPS.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">04</span><span class="s-title">Ligne 2 — Production créative</span></div>
+    <p class="lead">Le créatif est aujourd'hui le premier facteur de performance publicitaire. Ces prestations se vendent à la pièce, en lot, ou incluses dans un retainer de gestion.</p>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Lot de visuels statiques</h4><div class="svc-price">500 $<small>par lot</small></div></div>
+      <p>Lot de créatifs statiques conçus pour le test publicitaire : plusieurs angles, formats feed et story, déclinaisons prêtes à diffuser.</p>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Lot de vidéos publicitaires (12 vidéos)</h4><div class="svc-price">3 300 $<small>≈ 275 $ / vidéo</small></div></div>
+      <p>Production d'un lot de vidéos publicitaires formatées pour le test d'angles et de hooks : concept, montage, sous-titres, déclinaisons de formats.</p>
+      <div class="svc-for"><strong>Fourchette :</strong> le lot est modulable — un lot de 10 vidéos se vend autour de 2 750 $. En dessous de 10 unités, facturation à la pièce sur devis.</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Vidéo de vente (VSL)</h4><div class="svc-price">1 000 $<small>Mandat ponctuel</small></div></div>
+      <p>Vidéo de vente complète : rédaction du script, tournage, montage et habillage à la marque du client. Pièce maîtresse d'un tunnel de vente ou d'une campagne de génération de leads.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">05</span><span class="s-title">Ligne 3 — Tunnels de vente &amp; CRM</span></div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Tunnel de qualification / conversion</h4><div class="svc-price">3 500 $<small>Mandat ponctuel</small></div></div>
+      <p>Construction du parcours qui transforme le trafic publicitaire en rendez-vous ou en ventes : pages, formulaire de qualification, logique de scoring, connexion au CRM et au calendrier.</p>
+      <ul>
+        <li>Structure du tunnel et rédaction des étapes de qualification</li>
+        <li><strong>Connectivité CRM</strong> et transmission automatique des leads</li>
+        <li>Suivi de conversion bout en bout (du clic publicitaire au rendez-vous pris)</li>
+      </ul>
+      <div class="svc-for"><strong>Pour qui :</strong> services professionnels, B2B, immobilier, santé, formation — tout client qui vend par appel plutôt que par panier en ligne.</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Setup CRM automatisé — base</h4><div class="svc-price">500 $<small>Mandat ponctuel</small></div></div>
+      <p>Mise en place du pipeline de leads et des automatisations simples : étapes de vente, relances, notifications, attribution des leads à l'équipe.</p>
+      <div class="svc-for"><strong>Fourchette :</strong> un CRM complet (multi-pipelines, séquences avancées, intégrations métier) relève de la ligne 5 — Automatisation, et se chiffre sur devis.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">06</span><span class="s-title">Ligne 4 — Sites web &amp; e-commerce</span></div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Refonte ou création de site web</h4><div class="svc-price">à partir de 9 000 $<small>Mandat ponctuel</small></div></div>
+      <p>Prix de référence pour une refonte complète d'environ 15 pages bilingues sur Webflow, livrée en 8 à 10 semaines.</p>
+      <ul>
+        <li>Design UX/UI sur mesure, responsive, aligné sur l'identité de marque existante</li>
+        <li>Architecture bilingue <strong>français / anglais</strong> et gestion de contenu autonome (CMS)</li>
+        <li><strong>Intégration des outils métier</strong> du client : réservation, CRM, Google Analytics, pixel publicitaire</li>
+        <li>SEO de base : balises, structure des titres, optimisation des pages principales</li>
+        <li>Mini-formation à la gestion du site + documentation PDF remise au client</li>
+      </ul>
+      <div class="svc-for"><strong>Fourchette :</strong> 9 000 $ couvre le format 15 pages bilingue. Un site plus court, unilingue ou plus complexe (e-commerce, portail client, réservation sur mesure) est chiffré sur devis. <strong>Modalités :</strong> 50 % à la signature, 50 % à la livraison.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">07</span><span class="s-title">Ligne 5 — Automatisation &amp; agents IA</span></div>
+    <p class="lead">La ligne à plus forte valeur et la plus difficile à copier : on remplace du travail humain répétitif par des systèmes. C'est aussi celle qui génère les plus gros contrats et les retainers les plus stables.</p>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Agent IA sur mesure</h4><div class="svc-price">6 000 $<small>+ 750 $/mois optionnel</small></div></div>
+      <p>Conception et déploiement d'un agent conversationnel entraîné sur les contenus internes du client (formations, enregistrements, documentation, historiques de conversation), intégré directement à ses outils de travail.</p>
+      <ul>
+        <li>Extraction et structuration des données : transcription, nettoyage, base de connaissances vectorielle</li>
+        <li>Déploiement de l'agent dans <strong>Slack ou l'outil interne</strong> du client</li>
+        <li>Personnalisation du ton et du style sur la voix d'un dirigeant ou de l'entreprise</li>
+        <li>Suivi et ajustements pendant 14 jours après la livraison</li>
+      </ul>
+      <div class="svc-for"><strong>Retainer optionnel — 750 $/mois :</strong> 4 heures de support, ingestion continue de nouvelles données, optimisation des workflows, rapport mensuel. <strong>Délai :</strong> 15 à 20 jours ouvrables. <strong>Modalités :</strong> 50 % à la signature, 50 % à la livraison.</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Partenariat Tech Ops — automatisation continue</h4><div class="svc-price">6 000 $<small>par mois</small></div></div>
+      <p>Un expert en automatisation senior dédié, branché sur le Slack du client, appuyé par l'équipe technique TPS. Le client n'achète pas un projet, il achète une capacité d'exécution mensuelle.</p>
+      <ul>
+        <li>Jusqu'à <strong>3 nouveaux workflows automatisés par mois</strong> (design, développement, tests, documentation, déploiement)</li>
+        <li>Jusqu'à <strong>25 heures</strong> mensuelles réparties entre les experts impliqués</li>
+        <li>Maintenance active : correction de bogues prioritaire, optimisation continue des systèmes en place</li>
+        <li>Support et conseil d'architecture en continu ; recommandations sur la stack logicielle</li>
+        <li>Outils couverts : Make, Zapier, Slack, Monday, Notion, Airtable, Google Workspace, Frame.io</li>
+      </ul>
+      <div class="svc-for"><strong>Engagement :</strong> durée initiale ferme de 6 mois, renouvellement mensuel automatique, révision stratégique au 6<sup>e</sup> mois. Les frais d'abonnement aux plateformes sont à la charge du client. Les workflows non utilisés ne sont pas reportables.</div>
+    </div>
+
+    <div class="svc">
+      <div class="svc-head"><h4>Infrastructure métier complète sur mesure</h4><div class="svc-price">6 000 – 60 000 $<small>+ opération mensuelle</small></div></div>
+      <p>Automatisation d'un processus d'affaires de bout en bout : qualification des leads, contrats et paiements, signature numérique, portail client, production documentaire assistée par IA, coordination des intervenants externes.</p>
+      <ul>
+        <li>Déclencheurs IA : transcription d'appels, analyse des besoins, rédaction et classement automatiques de documents</li>
+        <li><strong>Portail client privé</strong> : suivi d'avancement par étape, téléversement de documents, paiement de factures en ligne, messagerie avec l'équipe, alertes sur les pièces manquantes</li>
+        <li>Intégrations avec les partenaires externes du client (juridique, fiscal, bancaire, fournisseurs)</li>
+        <li>Livraison par jalons, chaque jalon correspondant à une progression fonctionnelle du système</li>
+      </ul>
+      <div class="svc-for"><strong>Fourchette réelle :</strong> 6 000 $ pour un système ciblé, jusqu'à 60 000 $ pour une infrastructure complète multi-départements (référence : mandat signé à 60 000 $ en 4 jalons de 15 000 $ + 2 500 $/mois d'opération et de support). <strong>Tout mandat au-dessus de 15 000 $ doit être chiffré avec la direction TPS avant d'être présenté.</strong></div>
+    </div>
+  </div>
+
+  <div class="divider"><h2>Forfaits packagés</h2><span class="divider-meta">Plus simples à vendre qu'une carte à la pièce</span></div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">08</span><span class="s-title">Trois forfaits d'entrée</span></div>
+    <p class="lead">Trois portes d'entrée calibrées par taille de client. Les prix affichés incluent une remise partenaire par rapport à l'achat à la pièce ; ils constituent le plancher — aucune remise supplémentaire ne peut être accordée sans accord écrit de la direction TPS.</p>
+    <div class="plan-grid">
+      <div class="p-card">
+        <div class="p-phase">Forfait 1 — Entrée</div>
+        <div class="p-title">Lancement</div>
+        <div class="p-price">3 500 $ <small>ponctuel</small></div>
+        <div class="p-item">Setup Meta Ads complet</div>
+        <div class="p-item">Onboarding stratégique</div>
+        <div class="p-item">Lot de visuels statiques</div>
+        <div class="p-item">Suivi 30 jours (bonus)</div>
+        <div class="p-target">Valeur à la pièce : 3 500 $<br>Client : TPE qui démarre en publicité</div>
+      </div>
+      <div class="p-card hi">
+        <div class="p-phase">Forfait 2 — Le plus vendu</div>
+        <div class="p-title">Acquisition</div>
+        <div class="p-price">9 900 $ <small>ponctuel</small></div>
+        <div class="p-item">Tout le forfait Lancement</div>
+        <div class="p-item">Tunnel de qualification</div>
+        <div class="p-item">Setup CRM automatisé</div>
+        <div class="p-item">Vidéo de vente (VSL)</div>
+        <div class="p-item">Lot de 12 vidéos publicitaires</div>
+        <div class="p-target">Valeur à la pièce : 11 300 $ — remise 1 400 $<br>Client : PME qui veut un système complet</div>
+      </div>
+      <div class="p-card">
+        <div class="p-phase">Forfait 3 — Récurrent</div>
+        <div class="p-title">Croissance</div>
+        <div class="p-price">3 200 $ <small>/ mois + setup</small></div>
+        <div class="p-item">Setup à choisir (forfait 1 ou 2)</div>
+        <div class="p-item">Gestion publicitaire continue</div>
+        <div class="p-item">Production créative incluse</div>
+        <div class="p-item">Rapport de performance mensuel</div>
+        <div class="p-item">Partage de revenus 2 – 2,5 %</div>
+        <div class="p-target">Engagement minimum 3 mois<br>Client : entreprise en phase de scale</div>
+      </div>
+    </div>
+    <div class="note"><strong>Objectif de vente :</strong> tout mandat ponctuel doit se conclure par une proposition de passage au forfait Croissance. Un client en retainer vaut structurellement plus qu'un mandat ponctuel — et la commission partenaire suit (section 10).</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">09</span><span class="s-title">Grille tarifaire récapitulative</span></div>
+    <table class="tbl">
+      <thead><tr><th>Prestation</th><th>Type</th><th>Prix de référence (CAD)</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="3">Acquisition payante — Meta Ads</td></tr>
+        <tr><td class="l">Setup Meta Ads complet</td><td>Ponctuel</td><td>2 500 $</td></tr>
+        <tr><td class="l">Onboarding stratégique</td><td>Ponctuel</td><td>500 $</td></tr>
+        <tr><td class="l">Gestion publicitaire continue</td><td>Mensuel</td><td>à partir de 3 200 $</td></tr>
+        <tr><td class="l">Partage de revenus (en sus du retainer)</td><td>Mensuel</td><td>2 – 2,5 % du revenu net marketing</td></tr>
+        <tr class="grp"><td colspan="3">Production créative</td></tr>
+        <tr><td class="l">Lot de visuels statiques</td><td>Ponctuel</td><td>500 $</td></tr>
+        <tr><td class="l">Lot de 12 vidéos publicitaires</td><td>Ponctuel</td><td>3 300 $</td></tr>
+        <tr><td class="l">Vidéo de vente (VSL)</td><td>Ponctuel</td><td>1 000 $</td></tr>
+        <tr class="grp"><td colspan="3">Tunnels de vente &amp; CRM</td></tr>
+        <tr><td class="l">Tunnel de qualification / conversion</td><td>Ponctuel</td><td>3 500 $</td></tr>
+        <tr><td class="l">Setup CRM automatisé — base</td><td>Ponctuel</td><td>500 $</td></tr>
+        <tr class="grp"><td colspan="3">Sites web</td></tr>
+        <tr><td class="l">Refonte / création de site (15 pages bilingue)</td><td>Ponctuel</td><td>à partir de 9 000 $</td></tr>
+        <tr class="grp"><td colspan="3">Automatisation &amp; agents IA</td></tr>
+        <tr><td class="l">Agent IA sur mesure</td><td>Ponctuel</td><td>6 000 $</td></tr>
+        <tr><td class="l">Support agent IA</td><td>Mensuel</td><td>750 $</td></tr>
+        <tr><td class="l">Partenariat Tech Ops</td><td>Mensuel</td><td>6 000 $</td></tr>
+        <tr><td class="l">Infrastructure métier sur mesure</td><td>Ponctuel</td><td>6 000 – 60 000 $</td></tr>
+        <tr><td class="l">Opération &amp; support d'infrastructure</td><td>Mensuel</td><td>à partir de 2 500 $</td></tr>
+        <tr class="grp"><td colspan="3">Forfaits</td></tr>
+        <tr><td class="l">Forfait Lancement</td><td>Ponctuel</td><td>3 500 $</td></tr>
+        <tr><td class="l">Forfait Acquisition</td><td>Ponctuel</td><td>9 900 $</td></tr>
+        <tr class="trow"><td class="l">Forfait Croissance</td><td>Mensuel</td><td>3 200 $/mois + setup</td></tr>
+      </tbody>
+    </table>
+    <div class="note">Tous les prix sont en <strong>dollars canadiens, taxes applicables en sus</strong>. Les budgets publicitaires (ad spend) et les abonnements logiciels sont payés directement par le client et ne font jamais partie des montants ci-dessus. Les mentions « à partir de » et les fourchettes signalent un chiffrage sur devis : le partenaire présente le plancher et fait valider le montant final par TPS avant l'envoi de toute proposition.</div>
+  </div>
+
+  <div class="divider"><h2>Rémunération &amp; règles de vente</h2><span class="divider-meta">Ce qui s'applique au partenaire commercial</span></div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">10</span><span class="s-title">Rémunération du partenaire commercial</span></div>
+    <div class="wins">
+      <h3>Commission — 10 % du montant vendu</h3>
+      <ul>
+        <li><strong>Mandats ponctuels</strong> (setup, créatif, tunnel, site web, agent IA, infrastructure) : 10 % du montant net facturé, hors taxes.</li>
+        <li><strong>Retainers mensuels</strong> (gestion publicitaire, Tech Ops, support) : 10 % du retainer pendant les <strong>6 premiers mois</strong> de la relation, puis la commission cesse.</li>
+        <li><strong>Versement</strong> : dans les 15 jours suivant l'encaissement effectif par TPS. Sur un mandat payé en deux versements, la commission est versée en deux fois, au même rythme.</li>
+        <li><strong>Aucun plafond</strong> sur le nombre de clients apportés.</li>
+      </ul>
+    </div>
+    <div class="fixes">
+      <h3>Ce qui ne donne pas droit à commission</h3>
+      <ul>
+        <li>Le <strong>budget publicitaire</strong> (ad spend) et les abonnements logiciels payés par le client — ce ne sont pas des revenus TPS.</li>
+        <li>Le <strong>partage de revenus</strong> (2 – 2,5 % du revenu net marketing) : variable, calculé après coup, exclu de l'assiette de commission.</li>
+        <li>Les <strong>taxes</strong> (TPS/TVQ) facturées au client.</li>
+        <li>Tout montant <strong>non encaissé</strong> : facture impayée, mandat annulé, client en défaut. La commission suit l'argent réellement reçu.</li>
+        <li>Un client <strong>déjà en discussion</strong> avec TPS avant l'inscription du lead par le partenaire (voir règle d'enregistrement ci-dessous).</li>
+      </ul>
+    </div>
+    <div class="actions">
+      <h3>Règles à respecter</h3>
+      <ul>
+        <li><strong>Enregistrement du lead avant tout contact commercial</strong> : le partenaire transmet le nom de l'entreprise à TPS par écrit. TPS confirme sous 2 jours ouvrables si le prospect est libre. La protection du lead court 90 jours à compter de cette confirmation.</li>
+        <li><strong>Aucune modification de prix ni remise</strong> sans accord écrit de la direction TPS. Les prix de ce document sont des planchers.</li>
+        <li><strong>Aucun engagement de résultat</strong> ne peut être pris au nom de TPS : pas de ROAS promis, pas de délai garanti hors de ceux inscrits ici, pas de garantie de remboursement.</li>
+        <li><strong>Tout mandat au-dessus de 15 000 $</strong> est chiffré conjointement avec la direction TPS avant présentation au client.</li>
+        <li>Le partenaire agit comme <strong>travailleur autonome</strong>, facture ses commissions à TPS, et demeure responsable de ses obligations fiscales.</li>
+      </ul>
+    </div>
+    <div class="note"><strong>Exemple concret :</strong> un partenaire vend le forfait Acquisition (9 900 $) puis un passage au forfait Croissance à 3 200 $/mois. Commission : 990 $ sur le forfait ponctuel + 320 $ × 6 mois = 1 920 $ sur le retainer. <strong>Total : 2 910 $ pour un seul client.</strong></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">11</span><span class="s-title">Qualification — quel client pour quelle offre</span></div>
+    <table class="tbl">
+      <thead><tr><th>Signal chez le prospect</th><th>Offre à présenter</th><th>Ticket visé</th></tr></thead>
+      <tbody>
+        <tr><td class="l">Ne fait pas de publicité, veut commencer</td><td class="l">Forfait Lancement</td><td>3 500 $</td></tr>
+        <tr><td class="l">Fait de la publicité, résultats décevants, ne sait pas pourquoi</td><td class="l">Onboarding stratégique puis audit du compte</td><td>500 $ → retainer</td></tr>
+        <tr><td class="l">Vend par appel ou rendez-vous (B2B, services, immobilier)</td><td class="l">Forfait Acquisition (tunnel + CRM + VSL)</td><td>9 900 $</td></tr>
+        <tr><td class="l">Dépense déjà 5 000 $/mois et plus en publicité</td><td class="l">Forfait Croissance (retainer + partage de revenus)</td><td>3 200 $/mois</td></tr>
+        <tr><td class="l">Site vieillissant, pas mobile, contenu non modifiable</td><td class="l">Refonte de site web</td><td>9 000 $</td></tr>
+        <tr><td class="l">Équipe qui perd des heures en tâches répétitives et copier-coller</td><td class="l">Partenariat Tech Ops</td><td>6 000 $/mois</td></tr>
+        <tr><td class="l">Dirigeant dont l'expertise est le goulot d'étranglement de l'équipe</td><td class="l">Agent IA sur mesure</td><td>6 000 $</td></tr>
+        <tr><td class="l">Processus client long, documentaire, multi-intervenants</td><td class="l">Infrastructure métier sur mesure</td><td>15 000 $ et plus</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><strong>Trois questions qui qualifient en cinq minutes :</strong> 1) Combien dépensez-vous en publicité par mois aujourd'hui ? 2) Qui s'en occupe et depuis quand ? 3) Si on doublait vos demandes entrantes le mois prochain, votre équipe suivrait-elle ? — La troisième ouvre presque toujours la porte à la ligne Automatisation.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">12</span><span class="s-title">Objections courantes</span></div>
+    <div class="qa"><h4>« C'est cher / j'ai reçu une offre à 800 $ par mois. »</h4><p>À 800 $/mois, personne ne fait de la stratégie, du créatif et de l'optimisation quotidienne : on héberge le compte. Le retainer TPS est un budget d'opérations qui mobilise achat média, direction créative et analyse. Comparer le prix sans comparer ce qui est exécuté n'a pas de sens — et le budget publicitaire, lui, reste chez le client dans les deux cas.</p></div>
+    <div class="qa"><h4>« Quel ROAS garantissez-vous ? »</h4><p>Aucun, et se méfier de quiconque en garantit un : la performance dépend de l'offre, du produit, du prix et de l'inventaire, pas seulement de la publicité. Ce que TPS garantit, c'est l'exécution, la transparence des données et un rapport mensuel où chaque chiffre est traçable. Historique disponible sur demande.</p></div>
+    <div class="qa"><h4>« On veut essayer un mois pour voir. »</h4><p>Un mois ne suffit pas à sortir de la phase d'apprentissage des algorithmes ni à tester assez de créatifs pour conclure quoi que ce soit. C'est pourquoi l'engagement minimum est de 3 mois : c'est la durée en dessous de laquelle les données ne veulent rien dire. Une alternative existe pour tester à moindre engagement : le mandat de setup ponctuel.</p></div>
+    <div class="qa"><h4>« On a déjà une agence. »</h4><p>Parfait — l'audit ne coûte rien et ne demande qu'un accès en lecture. On regarde la structure du compte, le suivi des conversions et l'écart entre l'attribution de la plateforme et les ventes réelles. Si tout est propre, on le dit. Dans le cas contraire, le client saura exactement ce qu'il paie.</p></div>
+    <div class="qa"><h4>« Pourquoi payer un setup si vous gérez ensuite ? »</h4><p>Parce que le setup est un actif qui reste au client : compte publicitaire, suivi des conversions, tunnel et CRM lui appartiennent après paiement complet. Il peut reprendre la gestion en interne à tout moment sans repartir de zéro.</p></div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">13</span><span class="s-title">Conditions commerciales à annoncer au client</span></div>
+    <p class="lead">À mentionner dès la proposition — jamais à découvrir au moment de signer. Ces conditions figurent dans tous les contrats TPS.</p>
+    <div class="kpi-row-4">
+      <div class="kpi"><div class="kpi-label">Devise &amp; taxes</div><div class="kpi-val" style="font-size:16px">CAD + taxes</div><div class="kpi-sub">Taxes applicables en sus de tous les prix</div></div>
+      <div class="kpi"><div class="kpi-label">Mandats ponctuels</div><div class="kpi-val" style="font-size:16px">50 / 50</div><div class="kpi-sub">À la signature et à la livraison</div></div>
+      <div class="kpi"><div class="kpi-label">Retainers</div><div class="kpi-val" style="font-size:16px">1<sup>er</sup> du mois</div><div class="kpi-sub">À l'avance ; aucune exécution sans paiement</div></div>
+      <div class="kpi"><div class="kpi-label">Remboursement</div><div class="kpi-val" style="font-size:16px">Aucun</div><div class="kpi-sub">Renonciation à l'art. 2125 C.c.Q.</div></div>
+    </div>
+    <div class="diag">
+      <h3>Points à ne pas éluder</h3>
+      <ul>
+        <li><strong>Paiement par carte :</strong> frais additionnels de 3,5 %, non négociables. Le virement bancaire évite ces frais.</li>
+        <li><strong>Aucun remboursement :</strong> le client renonce expressément au bénéfice de l'article 2125 du Code civil du Québec. Les sommes versées restent dues même en cas d'abandon.</li>
+        <li><strong>Retard de paiement :</strong> TPS peut suspendre immédiatement les services et débiter le mode de paiement au dossier.</li>
+        <li><strong>Propriété intellectuelle :</strong> les livrables deviennent la propriété du client après paiement complet ; TPS conserve ses frameworks, gabarits et outils internes réutilisables.</li>
+        <li><strong>Non-sollicitation :</strong> le client s'engage à ne pas embaucher ni contracter directement les collaborateurs de TPS pendant le mandat et 12 mois après sa fin.</li>
+        <li><strong>Frais d'outils :</strong> abonnements aux plateformes, API et quotas sont à la charge exclusive du client, en sus des honoraires.</li>
+        <li><strong>Droit applicable :</strong> lois du Québec, tribunaux du district judiciaire de Montréal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="s-num">14</span><span class="s-title">Du premier contact à la commission</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-n">Étape 1</div><h4>Enregistrer le lead</h4><p>Nom de l'entreprise transmis par écrit à TPS. Confirmation de disponibilité sous 2 jours ouvrables. Protection 90 jours.</p></div>
+      <div class="step"><div class="step-n">Étape 2</div><h4>Qualifier</h4><p>Budget publicitaire actuel, mode de vente, capacité de l'équipe. Identifier la ligne de services et le ticket visé (section 11).</p></div>
+      <div class="step"><div class="step-n">Étape 3</div><h4>Appel conjoint</h4><p>Le partenaire organise l'appel de découverte avec un représentant TPS, qui valide la faisabilité et le chiffrage.</p></div>
+      <div class="step"><div class="step-n">Étape 4</div><h4>Proposition &amp; contrat</h4><p>TPS rédige la proposition et le contrat, gère la signature électronique et l'encaissement du premier versement.</p></div>
+      <div class="step"><div class="step-n">Étape 5</div><h4>Commission</h4><p>Le partenaire facture 10 % ; versement dans les 15 jours suivant chaque encaissement client.</p></div>
+    </div>
+    <div class="note"><strong>Contact TPS Digital Services</strong> — 9495-4872 Québec Inc., 1946 rue du Limousin, Roxton (Québec) J0E 1Z0. Toute question de chiffrage, de faisabilité ou d'enregistrement de lead passe par la direction avant d'être présentée au client.</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>TPS Digital Services — Document confidentiel, usage partenaire uniquement</span>
+  <span>Offre de services &amp; grille tarifaire — Version 1.0</span>
+</div>
+
+</body>
+</html>
