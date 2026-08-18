@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Charts for the TPS Meta Ads client report — Adam Gagne x DS CC 1.
+"""Charts for the TPS Meta Ads client report — Immense.
 
 All figures are built from the Meta Ads API values pulled in this session
 (last 30 days: 2026-07-19 -> 2026-08-17). Chart 3 is explicitly a projection
@@ -85,7 +85,7 @@ axes[0].set_ylabel("Taux (échelles indépendantes)", fontsize=8, color=MUTED)
 fig.suptitle("Les deux premières étapes du tunnel sont excellentes. La troisième casse tout.",
              fontsize=12.5, fontweight="bold", y=1.0, color=INK)
 fig.text(0.5, -0.04,
-         "Compte Adam Gagne x DS CC 1 · 30 derniers jours (19 juil. → 17 août 2026) · source : Meta Ads. "
+         "Immense · compte Meta Ads · 30 derniers jours (19 juil. → 17 août 2026) · source : Meta Ads. "
          "Chaque panneau a sa propre échelle — la bande grise est la norme e-commerce apparel.",
          ha="center", fontsize=7.5, color=MUTED)
 fig.tight_layout()
