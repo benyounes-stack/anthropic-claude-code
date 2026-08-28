@@ -29,7 +29,129 @@ Prices shown in **CAD**. Sale end date on creative: **Monday, August 31**.
 
 ---
 
-## 3. Meta / Instagram — Primary text
+## 3. General copy — pairs with any of the five creatives
+
+Built only from claims that are true on **every** image: 10% off sitewide, the product mix, the Zardo Cards name, CAD pricing, and the campaign end date. Deliberately excluded: "rated 4.9 out of 5" (image 3 only), "limited stock" and "ships within 24 hours" (images 2 and 3 only). Keep those three riding on the images that carry them so nothing in the text outruns the artwork.
+
+### Primary text — drop-in, any image
+
+**G1 · Short**
+> Everything on the site is 10% off. Sealed, graded, vintage, Japanese — no exclusions, no code. Ends Monday, August 31.
+
+**G2 · Short**
+> 10% off sitewide at Zardo Cards. Every item, until Monday.
+
+**G3 · Short**
+> Four days. 10% off everything. Then it's back to full price.
+
+**G4 · Short**
+> Your whole wishlist just got 10% cheaper. Ends Monday, August 31.
+
+**G5 · Medium**
+> Back to school sale: **10% off sitewide.**
+>
+> Booster boxes, blister packs, Elite Trainer Boxes, graded slabs, vintage and Japanese cards — every item at Zardo Cards is discounted. No exclusions, no minimum, no code to remember.
+>
+> Ends Monday, August 31.
+
+**G6 · Medium**
+> 10% off sounds small until you're buying sealed.
+>
+> A $200 booster box is $180. A $1,650 blister is $1,485 CAD. A $2,000 slab saves you $200. Same math on every item on the site.
+>
+> Ends Monday, August 31.
+
+**G7 · Medium**
+> Whatever's on your list — the sealed box, the graded slab, the Japanese card you can't find anywhere else — it's 10% cheaper this week.
+>
+> Sitewide at Zardo Cards. No exclusions. Ends Monday, August 31.
+
+**G8 · Medium**
+> No minimum. No exclusions. No code to remember.
+>
+> Just 10% off every item at Zardo Cards — sealed product, graded slabs, vintage and Japanese cards, singles and boxes alike.
+>
+> Ends Monday, August 31.
+
+**G9 · Medium**
+> School's back. So is the hunt.
+>
+> Everything at Zardo Cards is 10% off for back to school — from a single blister pack to a full booster box to the slab you've been circling for months.
+>
+> Ends Monday, August 31.
+
+**G10 · Medium**
+> Booster boxes. Elite Trainer Boxes. Blister packs. PSA and CGC slabs. Vintage and Japanese cards.
+>
+> All 10% off at Zardo Cards until Monday, August 31. Priced in CAD, discount applied at checkout.
+
+**G11 · Long**
+> Here's the whole offer, no fine print: **10% off every item at Zardo Cards.**
+>
+> Sealed booster boxes. Blister packs. Elite Trainer Boxes. PSA and CGC graded slabs. Vintage cards and Japanese sets. Singles you've been hunting for a year. All of it, 10% off — no exclusions, no minimum spend, no code to enter.
+>
+> The discount comes off automatically at checkout, prices are in CAD, and the sale ends Monday, August 31.
+>
+> 👉 Shop the sale.
+
+**G12 · Long**
+> Every collector has the same list.
+>
+> The sealed box you keep telling yourself you'll buy next month. The graded card that's been sitting in an open tab since spring. The Japanese set you've only ever seen in photos.
+>
+> This week, all of it is **10% off** — sitewide at Zardo Cards, no exclusions, no minimum. Back to school sale, ends Monday, August 31.
+>
+> Go get the one you've been putting off.
+
+### Modular hooks — first line, any body, any image
+
+Use these as the line above "See more". Each one works in front of any G-block or any of the five creative-specific angles.
+
+- Everything is 10% off. Yes, everything.
+- 10% off sitewide. No exclusions, no code.
+- Your whole wishlist just got cheaper.
+- Four days. Then it's back to full price.
+- Back to school, back to building.
+- Sealed, graded, vintage, Japanese — all 10% off.
+- That card you keep opening in a new tab? 10% off.
+- The sale is simple: 10% off, everything, until Monday.
+- School's back. So is the hunt.
+- 10% off every single item at Zardo Cards.
+
+### Modular closers
+
+- Ends Monday, August 31. Discount applies at checkout.
+- Sitewide. No exclusions. No minimum.
+- 10% off. Every item. Until Monday.
+- No code needed — it comes off at checkout.
+- Shop the sale before Monday.
+
+### Universal headlines (≤40 characters)
+
+| Headline | Chars |
+|---|---|
+| 10% Off Everything at Zardo Cards | 33 |
+| 10% Off Sitewide | 16 |
+| Back to School: 10% Off Sitewide | 32 |
+| Every Item, 10% Off | 19 |
+| Save 10% on Your Whole Order | 28 |
+| 10% Off — No Exclusions | 23 |
+| Sitewide Sale Ends Monday | 25 |
+| Pokémon Cards, 10% Off | 22 |
+
+### Universal link descriptions (≤30 characters)
+
+| Description | Chars |
+|---|---|
+| No exclusions, no code | 22 |
+| Ends Monday, August 31 | 22 |
+| Sealed, graded & vintage | 24 |
+| Every item on the site | 21 |
+| Priced in CAD | 13 |
+
+---
+
+## 4. Meta / Instagram — Primary text
 
 ### Angle A — Straight offer (broad, cold traffic)
 
@@ -102,7 +224,7 @@ Prices shown in **CAD**. Sale end date on creative: **Monday, August 31**.
 
 ---
 
-## 4. Meta headlines (≤40 characters)
+## 5. Meta headlines (≤40 characters)
 
 - 10% Off Sitewide — Ends Monday
 - Back to School: 10% Off Everything
@@ -113,7 +235,7 @@ Prices shown in **CAD**. Sale end date on creative: **Monday, August 31**.
 - Rated 4.9/5 — Now 10% Off
 - $1,650 → $1,485 CAD
 
-## 5. Meta link descriptions (≤30 characters)
+## 6. Meta link descriptions (≤30 characters)
 
 - Ends Monday, August 31
 - Ships within 24 hours
@@ -121,13 +243,13 @@ Prices shown in **CAD**. Sale end date on creative: **Monday, August 31**.
 - Limited stock
 - Sitewide, no exclusions
 
-## 6. CTA buttons
+## 7. CTA buttons
 
 Primary: **Shop Now** · Alternates: Save 10% Now · Shop the Sale · Get Offer
 
 ---
 
-## 7. Creative-to-copy pairing
+## 8. Creative-to-copy pairing
 
 | # | Creative | Best angle | Headline | Notes |
 |---|---|---|---|---|
@@ -141,7 +263,7 @@ Suggested test structure: one ad set, all 5 creatives, each with its paired angl
 
 ---
 
-## 8. Story / Reel text overlays (3–6 words per frame)
+## 9. Story / Reel text overlays (3–6 words per frame)
 
 **Sequence 1 — offer**
 1. "Everything. 10% off." → 2. "Slabs. Packs. Boxes." → 3. "Ends Monday." → 4. "Swipe up 👆"
@@ -154,7 +276,7 @@ Suggested test structure: one ad set, all 5 creatives, each with its paired angl
 
 ---
 
-## 9. Email
+## 10. Email
 
 **Subject lines**
 - 10% off everything (ends Monday)
@@ -192,7 +314,7 @@ Suggested test structure: one ad set, all 5 creatives, each with its paired angl
 
 ---
 
-## 10. SMS (≤160 characters)
+## 11. SMS (≤160 characters)
 
 - Zardo Cards: 10% off SITEWIDE for back to school. Slabs, packs, boxes — no exclusions. Ends Mon Aug 31. Shop: [LINK] Reply STOP to opt out.
 - Last call — 10% off everything at Zardo Cards ends tonight. Limited stock. [LINK] Reply STOP to opt out.
@@ -200,7 +322,7 @@ Suggested test structure: one ad set, all 5 creatives, each with its paired angl
 
 ---
 
-## 11. Google Ads — Responsive Search Ads
+## 12. Google Ads — Responsive Search Ads
 
 **Headlines (≤30 chars)**
 
@@ -232,7 +354,7 @@ Suggested test structure: one ad set, all 5 creatives, each with its paired angl
 
 ---
 
-## 12. Organic social captions
+## 13. Organic social captions
 
 **Instagram / Facebook**
 > Back to school, back to building. 10% off sitewide until Monday — slabs, sealed, vintage, Japanese, all of it. 🔥
@@ -248,7 +370,7 @@ Suggested test structure: one ad set, all 5 creatives, each with its paired angl
 
 ---
 
-## 13. On-site microcopy
+## 14. On-site microcopy
 
 - **Announcement bar:** `BACK TO SCHOOL — 10% OFF SITEWIDE · ENDS MONDAY AUG 31 · Discount applied at checkout`
 - **Popup headline:** `10% off. Everything.`
