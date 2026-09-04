@@ -8,7 +8,7 @@ Columns: reporting date · period covered · where it was posted · who ran it �
 | Ran on | Period | Posted to | By | Outcome |
 | - | - | - | - | - |
 | 2026-08-28 | 2026-08-21 → 2026-08-27 | Slack draft only (`#client-az-motorsport`) | benyounes | ❌ Never sent. Drafted after the 1PM call was cancelled, left in drafts. |
-| 2026-09-04 | 2026-08-28 → 2026-09-03 | Slack draft (`#client-az-motorsport`) + Alfredify | benyounes | ⏳ Alfredify posting blocked — no API credentials in the session (see SKILL.md § Alfredify). |
+| 2026-09-04 | 2026-08-28 → 2026-09-03 | `#client-az-motorsport` 13:46 CET | benyounes | ✅ Sent (edited: Google Ads section dropped, a line added about the DM campaign, tracking item removed from next week). Alfredify still not posted — no API credentials (see SKILL.md § Alfredify). |
 
 ## Known gaps carried week to week
 

@@ -30,7 +30,7 @@ Ces trois-là étaient des consignes du 21 août. Elles ne sont pas appliquées 
 | - | - | - | - |
 | ❌ | **Placements manuels, IG Stories + Reels seulement** | Benyounes | Les 4 ad sets qui livrent sont encore sur placements automatiques : Facebook, Instagram, Audience Network, Messenger, WhatsApp et Threads, toutes positions. Or 100 % du revenu du compte vient de Stories et Reels. |
 | ❌ | **Géo 100 % US sur les ad sets d'achat** | Benyounes | Les 4 ad sets ciblent encore `US + CA`. |
-| ❌ | **`TPS \| LEAD/DM` remis en ligne, 50 $/jour, US** | Benyounes | 0 $ dépensé, 0 impression du 28 août au 3 sept. |
+| ❌ | **`TPS \| LEAD/DM` remis en ligne, 50 $/jour, US** | Benyounes | Budget bien réglé à 50 $/jour, mais la campagne est `PAUSED` au 4 sept 12h35 UTC : 0 $ dépensé, 0 impression du 28 août au 3 sept **et aujourd'hui**. Le report envoyé au client dit qu'elle est lancée — il faut l'activer pour que ce soit vrai. |
 
 À noter : l'audience `WEBSITE VISITORS - 180 DAYS` est toujours branchée en **exclusion** sur les 4 ad sets. C'est justement l'audience cassée (~20 personnes contre 3 103 ViewContent en 30 jours) — elle n'exclut donc rien, mais elle reste dans le build.
 
