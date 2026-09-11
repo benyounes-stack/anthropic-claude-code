@@ -1,0 +1,588 @@
+<title>Marché du Gel de Créatine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --paper:#F7F6F2;
+    --surface:#FFFFFF;
+    --sunk:#EFEDE6;
+    --ink:#17171A;
+    --muted:#6F6B60;
+    --line:#DFDCD2;
+    --line-strong:#C6C2B4;
+    --accent:#FFBB10;
+    --accent-deep:#8A5A00;
+    --risk:#A33A1E;
+    --risk-soft:#F3E2DB;
+    --go:#2E6B4F;
+    --go-soft:#DFEBE3;
+    --display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+    --body:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --prose:64ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#131316; --surface:#1B1B1F; --sunk:#232328;
+      --ink:#F1EFE8; --muted:#9B968A; --line:#2F2F36; --line-strong:#474751;
+      --accent:#FFBB10; --accent-deep:#FFD166;
+      --risk:#E89073; --risk-soft:#3A241C;
+      --go:#79C39D; --go-soft:#1D3329;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#131316; --surface:#1B1B1F; --sunk:#232328;
+    --ink:#F1EFE8; --muted:#9B968A; --line:#2F2F36; --line-strong:#474751;
+    --accent:#FFBB10; --accent-deep:#FFD166;
+    --risk:#E89073; --risk-soft:#3A241C;
+    --go:#79C39D; --go-soft:#1D3329;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:var(--body); font-size:17px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding-inline:24px; padding-block:0 72px}
+  .prose{max-width:var(--prose)}
+  p{margin:0 0 1em}
+  a{color:inherit; text-decoration:underline; text-decoration-color:var(--accent); text-underline-offset:3px; text-decoration-thickness:2px}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+  strong{font-weight:600}
+  em{font-style:italic}
+
+  .eyebrow{
+    font-family:var(--display); font-size:11px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ---------- masthead ---------- */
+  header.masthead{border-bottom:1px solid var(--line-strong); padding-block:40px 30px; margin-bottom:44px}
+  .masthead-top{display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between; align-items:baseline; margin-bottom:26px}
+  h1{
+    font-family:var(--display); font-weight:700; font-size:clamp(34px,6.2vw,58px);
+    line-height:1.03; letter-spacing:-.028em; margin:0 0 18px; text-wrap:balance; max-width:16ch;
+  }
+  h1 .hl{
+    background:linear-gradient(transparent 62%, var(--accent) 62%, var(--accent) 94%, transparent 94%);
+    padding-inline:1px;
+  }
+  .standfirst{font-size:20px; line-height:1.5; color:var(--ink); max-width:58ch; margin:0}
+  .masthead-meta{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:24px}
+
+  /* ---------- verdict panel ---------- */
+  .verdict{
+    background:var(--surface); border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    padding:26px 28px; margin-bottom:56px;
+  }
+  .verdict h2{font-family:var(--display); font-size:17px; font-weight:600; letter-spacing:-.01em; margin:0 0 14px}
+  .verdict ol{margin:0; padding-left:1.15em; display:flex; flex-direction:column; gap:11px}
+  .verdict li{padding-left:4px}
+  .verdict li::marker{font-family:var(--display); font-weight:700; color:var(--accent-deep)}
+
+  /* ---------- sections ---------- */
+  section{margin-bottom:64px; scroll-margin-top:20px}
+  .sec-head{display:flex; gap:18px; align-items:baseline; border-top:1px solid var(--line-strong); padding-top:14px; margin-bottom:26px}
+  .sec-num{
+    font-family:var(--display); font-weight:700; font-size:13px; letter-spacing:.06em;
+    color:var(--accent-deep); flex:none; padding-top:6px;
+  }
+  h2.sec-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(24px,3.6vw,33px);
+    letter-spacing:-.022em; line-height:1.14; margin:0; text-wrap:balance;
+  }
+  h3{
+    font-family:var(--display); font-weight:600; font-size:18px; letter-spacing:-.012em;
+    margin:36px 0 12px;
+  }
+  h4{font-family:var(--display); font-weight:600; font-size:14.5px; letter-spacing:-.005em; margin:24px 0 8px}
+
+  /* ---------- figure blocks ---------- */
+  figure{margin:32px 0}
+  figcaption{font-family:var(--display); font-size:12.5px; line-height:1.5; color:var(--muted); margin-top:12px; max-width:76ch}
+  .chartbox{background:var(--surface); border:1px solid var(--line); padding:22px 20px 14px}
+  .chartbox svg{display:block; width:100%; height:auto; max-width:100%}
+  .chart-legend{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:6px; padding-inline:6px}
+  .lg{display:flex; align-items:center; gap:8px; font-family:var(--display); font-size:12px; color:var(--muted)}
+  .lg i{width:16px; height:3px; flex:none; display:block; border-radius:2px}
+
+  /* ---------- tables ---------- */
+  .tablewrap{overflow-x:auto; border:1px solid var(--line); background:var(--surface)}
+  table{border-collapse:collapse; width:100%; min-width:520px; font-family:var(--display); font-size:13.5px}
+  caption{text-align:left; font-family:var(--display); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:14px 16px 0}
+  th,td{text-align:left; padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top}
+  thead th{font-weight:600; font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--line-strong)}
+  tbody tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
+  td.name{font-weight:600}
+
+  /* ---------- competitor entries ---------- */
+  .rivals{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line)}
+  .rival{display:grid; grid-template-columns:150px 1fr; gap:6px 28px; padding:22px 0; border-bottom:1px solid var(--line)}
+  .rival-id{display:flex; flex-direction:column; gap:6px}
+  .rival-name{font-family:var(--display); font-weight:700; font-size:16px; letter-spacing:-.012em; line-height:1.2}
+  .rival-body{font-size:16px}
+  .rival-body p{margin:0 0 .7em}
+  .rival-body p:last-child{margin-bottom:0}
+  .tag{
+    font-family:var(--display); font-size:10px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    padding:3px 7px; border:1px solid var(--line-strong); color:var(--muted); align-self:flex-start;
+  }
+  .tag.direct{background:var(--risk-soft); border-color:transparent; color:var(--risk)}
+  .tag.adj{background:var(--sunk); border-color:transparent; color:var(--muted)}
+  .spec{font-family:var(--display); font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums}
+
+  /* ---------- callouts ---------- */
+  .note{
+    border:1px solid var(--line); background:var(--surface);
+    padding:20px 22px; margin:30px 0; font-size:16px;
+  }
+  .note.risk{border-left:4px solid var(--risk)}
+  .note.go{border-left:4px solid var(--go)}
+  .note-label{
+    font-family:var(--display); font-size:11px; font-weight:600; letter-spacing:.14em;
+    text-transform:uppercase; display:block; margin-bottom:9px;
+  }
+  .note.risk .note-label{color:var(--risk)}
+  .note.go .note-label{color:var(--go)}
+  .note p:last-child{margin-bottom:0}
+
+  ul.plain{margin:0 0 1em; padding-left:1.15em}
+  ul.plain li{margin-bottom:.5em}
+
+  /* ---------- supplier cards ---------- */
+  .supp{display:grid; grid-template-columns:repeat(auto-fit,minmax(258px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:26px 0}
+  .supp > div{background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:8px}
+  .supp .s-name{font-family:var(--display); font-weight:700; font-size:15.5px; letter-spacing:-.01em}
+  .supp .s-geo{font-family:var(--display); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-deep); font-weight:600}
+  .supp .s-txt{font-size:15px; line-height:1.52; margin:0}
+  .supp .s-meta{font-family:var(--display); font-size:11.5px; color:var(--muted); margin-top:auto; padding-top:6px; border-top:1px dotted var(--line-strong); line-height:1.5}
+
+  /* ---------- steps ---------- */
+  .steps{counter-reset:st; display:flex; flex-direction:column; gap:2px; margin:26px 0}
+  .steps > li{
+    list-style:none; counter-increment:st; display:grid; grid-template-columns:auto 1fr;
+    gap:18px; padding:16px 0; border-bottom:1px solid var(--line); align-items:baseline;
+  }
+  .steps > li::before{
+    content:"S" counter(st); font-family:var(--display); font-weight:700; font-size:12px;
+    letter-spacing:.05em; color:var(--accent-deep);
+  }
+  .steps p{margin:0}
+  .steps .st-t{font-family:var(--display); font-weight:600; font-size:15.5px; display:block; margin-bottom:3px}
+
+  /* ---------- sources ---------- */
+  .sources{border-top:1px solid var(--line-strong); padding-top:22px; margin-top:12px}
+  .sources ol{font-family:var(--display); font-size:12.5px; line-height:1.6; color:var(--muted); padding-left:1.4em; margin:0; columns:2; column-gap:36px}
+  .sources li{margin-bottom:7px; break-inside:avoid}
+  .sources a{color:var(--ink)}
+
+  footer.foot{margin-top:52px; padding-top:18px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:space-between}
+
+  @media (max-width:620px){
+    body{font-size:16px}
+    .rival{grid-template-columns:1fr; gap:12px}
+    .sources ol{columns:1}
+    .sec-head{gap:12px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="eyebrow">Dossier de marché · TPS Digital Services</span>
+    <span class="eyebrow">11 septembre 2026</span>
+  </div>
+  <h1>La créatine en gel<br>est <span class="hl">déjà née</span>.<br>Reste à la faire bien.</h1>
+  <p class="standfirst">Le marché de la créatine croît entre 11 % et 25 % par an selon les cabinets. Le format gel existe, mais il est occupé par deux acteurs seulement — et la chimie explique pourquoi.</p>
+  <div class="masthead-meta">
+    <span class="eyebrow">Périmètre : monde · Europe · France</span>
+    <span class="eyebrow">4 questions posées · 5 sections</span>
+  </div>
+</header>
+
+<div class="verdict">
+  <h2>Ce qu'il faut retenir avant de lire</h2>
+  <ol>
+    <li><strong>L'hypothèse « personne ne fait de gel de créatine » est fausse.</strong> Deux produits sont en vente aujourd'hui : <strong>CREG+</strong> (pure player DTC américain) et <strong>Promix Liposomal Creatine</strong> (marque installée). Aucun des deux n'a encore de position dominante — la fenêtre n'est pas fermée, elle est entrouverte.</li>
+    <li><strong>La vraie barrière n'est pas commerciale, elle est chimique.</strong> La créatine se dégrade en créatinine au contact de l'eau, d'autant plus vite que le pH est bas : ~12 % de perte en 3 jours à pH 4,5. Un gel aqueux classique est un produit mort en stock. C'est la raison pour laquelle la catégorie est vide — pas un oubli du marché.</li>
+    <li><strong>Le marché porteur est là.</strong> 1,7–1,9 Md$ mondial en 2026, US à 0,51 Md$ (2025) vers 1,82 Md$ (2031), Europe ~220 M$ (2024) à ~500 M$ (2030). Les formats « sans shaker » sont le segment le plus rapide (+27 %/an aux US).</li>
+    <li><strong>La France impose 3 g/jour, pas 5 g.</strong> Toute la concurrence dose à 5 g. Un lancement français à 5 g est hors-cadre réglementaire.</li>
+  </ol>
+</div>
+
+<!-- ============ 01 ============ -->
+<section id="marche">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">L'étendue du marché</h2>
+  </div>
+
+  <div class="prose">
+    <p>Premier avertissement méthodologique, parce qu'il conditionne tout ce qui suit : <strong>les cabinets ne sont pas d'accord entre eux</strong>, et les écarts ne sont pas marginaux. Ils viennent de trois définitions différentes qu'on confond souvent.</p>
+  </div>
+
+  <figure>
+    <div class="tablewrap">
+      <table>
+        <caption>Trois périmètres, trois chiffres — à ne pas mélanger</caption>
+        <thead>
+          <tr><th>Périmètre mesuré</th><th class="num">Taille</th><th class="num">Horizon</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Créatine matière première (ingrédient industriel)</td><td class="num">432 M$ (2025)</td><td class="num">636 M$ (2035)</td><td>Market.us</td></tr>
+          <tr><td class="name">Compléments de créatine — vision prudente</td><td class="num">1,66 Md$ (2025)</td><td class="num">2,86 Md$ (2030)</td><td>TBRC</td></tr>
+          <tr><td class="name">Compléments de créatine — vision haute</td><td class="num">1,10 Md$ (2024)</td><td class="num">4,20 Md$ (2030)</td><td>Grand View</td></tr>
+          <tr><td class="name">Ventes retail mesurées US (réel, pas prévision)</td><td class="num">310 M$</td><td class="num">378 M$ (52 sem., fin 2024)</td><td>SPINS</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>La ligne SPINS est la seule <em>observée</em> — les trois autres sont modélisées. C'est celle sur laquelle je m'appuierais pour un business plan : elle décrit le circuit mesuré US (magasins physiques), donc elle sous-estime le e-commerce, qui pèse déjà plus de la moitié des ventes.</figcaption>
+  </figure>
+
+  <h3>Le marché qui vous concerne réellement</h3>
+  <div class="prose">
+    <p>Vous ne vendez pas « de la créatine ». Vous vendez <strong>un format de créatine à des gens qui en prennent déjà</strong>. Le marché adressable n'est donc pas les 1,8 Md$ mondiaux, mais la fraction de consommateurs existants prête à payer une prime pour ne plus toucher un shaker. Le meilleur proxy disponible est le segment gummies : il est né en 2023, il a fait <strong>+360 % de croissance en valeur sur un an</strong> (52 semaines closes fin 2024), et il pèse aujourd'hui entre 48 M$ et 210 M$ selon les cabinets.</p>
+    <p>Traduction : <strong>le marché du « confort de prise » vaut à lui seul 50 à 200 M$ et il double environ tous les deux ans.</strong> C'est là que se joue votre pari, pas sur le total créatine.</p>
+  </div>
+
+  <figure>
+    <div class="tablewrap">
+      <table>
+        <caption>Découpage géographique</caption>
+        <thead>
+          <tr><th>Zone</th><th class="num">Base</th><th class="num">Projection</th><th class="num">TCAC</th><th>Lecture</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Monde</td><td class="num">1,66–1,85 Md$ (2025-26)</td><td class="num">2,9–4,2 Md$ (2030)</td><td class="num">11,5 – 25 %</td><td>Fourchette large, voir §02</td></tr>
+          <tr><td class="name">États-Unis</td><td class="num">0,51 Md$ (2025)</td><td class="num">1,82 Md$ (2031)</td><td class="num">24,2 %</td><td>39 % du monde · le moteur</td></tr>
+          <tr><td class="name">Europe</td><td class="num">221 M$ (2024)</td><td class="num">~502 M$ (2030)</td><td class="num">14,7 – 16,2 %</td><td>Allemagne en tête</td></tr>
+          <tr><td class="name">France</td><td class="num">19,8 M$ (2023)</td><td class="num">56,2 M$ (2030)</td><td class="num">16,1 %</td><td>~1 % du marché mondial</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Note de fiabilité : une même source publie pour l'Europe 2030 à la fois « ~502 M$ » et « 1 924 M$ ». Seul le premier est cohérent avec la base 2024 et le TCAC annoncé — j'ai retenu celui-là et écarté l'autre.</figcaption>
+  </figure>
+
+  <div class="note risk">
+    <span class="note-label">Le chiffre qui doit changer votre plan</span>
+    <p>La France pèse <strong>~20 M$</strong>, soit environ 1 % du marché mondial. Un lancement franco-français ne finance pas un développement de formulation. Si le produit se fait, il se conçoit dès le départ pour l'export (UE + UK + US), avec deux dosages : 3 g pour la France/UE, 5 g pour l'export.</p>
+  </div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="croissance">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">La courbe de croissance</h2>
+  </div>
+
+  <div class="prose">
+    <p>Je ne trace pas une courbe unique : ce serait donner une fausse précision. Voici les deux scénarios publiés, superposés. Ils se croisent en 2026 — puis divergent du simple au double.</p>
+  </div>
+
+  <figure>
+    <div class="chartbox">
+      <svg viewBox="0 0 720 330" role="img" aria-label="Courbe du marché mondial des compléments de créatine de 2024 à 2030, deux scénarios : prudent de 1,49 à 2,86 milliards de dollars, haut de 1,10 à 4,20 milliards de dollars.">
+        <!-- grid -->
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="62" y1="52.4" x2="636" y2="52.4"/>
+          <line x1="62" y1="109.3" x2="636" y2="109.3"/>
+          <line x1="62" y1="166.2" x2="636" y2="166.2"/>
+          <line x1="62" y1="223.1" x2="636" y2="223.1"/>
+        </g>
+        <line x1="62" y1="280" x2="636" y2="280" stroke="var(--line-strong)" stroke-width="1.5"/>
+
+        <!-- y labels -->
+        <g fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="11" text-anchor="end">
+          <text x="52" y="56.4">4</text>
+          <text x="52" y="113.3">3</text>
+          <text x="52" y="170.2">2</text>
+          <text x="52" y="227.1">1</text>
+          <text x="52" y="284">0</text>
+        </g>
+        <text x="62" y="26" fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600" letter-spacing="1">MILLIARDS USD</text>
+
+        <!-- x labels -->
+        <g fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="11" text-anchor="middle">
+          <text x="62" y="300">2024</text>
+          <text x="157.7" y="300">2025</text>
+          <text x="253.3" y="300">2026</text>
+          <text x="349" y="300">2027</text>
+          <text x="444.7" y="300">2028</text>
+          <text x="540.3" y="300">2029</text>
+          <text x="636" y="300">2030</text>
+        </g>
+
+        <!-- high scenario -->
+        <polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+          points="62,217.4 157.7,201.5 253.3,182.2 349,157.7 444.7,126.9 540.3,88.9 636,41.1"/>
+        <circle cx="636" cy="41.1" r="4.5" fill="var(--accent)"/>
+        <text x="646" y="38" fill="var(--ink)" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700">4,20 Md$</text>
+        <text x="646" y="52" fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="10.5">+25 %/an</text>
+
+        <!-- low scenario -->
+        <polyline fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="7 5" stroke-linejoin="round" stroke-linecap="round"
+          points="62,195.2 157.7,185.6 253.3,174.7 349,162.8 444.7,149.2 540.3,134.4 636,117.3"/>
+        <circle cx="636" cy="117.3" r="4.5" fill="var(--ink)"/>
+        <text x="646" y="114" fill="var(--ink)" font-family="Space Grotesk, sans-serif" font-size="12.5" font-weight="700">2,86 Md$</text>
+        <text x="646" y="128" fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="10.5">+11,5 %/an</text>
+
+        <!-- crossing marker -->
+        <line x1="253.3" y1="178" x2="253.3" y2="280" stroke="var(--line-strong)" stroke-width="1" stroke-dasharray="3 4"/>
+        <circle cx="253.3" cy="178.5" r="3" fill="var(--muted)"/>
+        <text x="262" y="205" fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600">les deux scénarios</text>
+        <text x="262" y="219" fill="var(--muted)" font-family="Space Grotesk, sans-serif" font-size="11" font-weight="600">s'accordent : ~1,8 Md$</text>
+      </svg>
+      <div class="chart-legend">
+        <span class="lg"><i style="background:var(--accent)"></i>Scénario haut — Grand View Research</span>
+        <span class="lg"><i style="background:var(--ink)"></i>Scénario prudent — The Business Research Company</span>
+      </div>
+    </div>
+    <figcaption>Marché mondial des compléments de créatine, 2024–2030. Les deux cabinets convergent sur 2026 (~1,8 Md$) et divergent ensuite de 47 %. Aucun des deux n'est « le bon » : l'écart mesure l'incertitude réelle sur la durabilité de l'engouement.</figcaption>
+  </figure>
+
+  <h3>Ce que la courbe ne montre pas, et qui compte plus</h3>
+  <div class="prose">
+    <p>Le total progresse de 11 à 25 %. Mais la croissance n'est pas répartie uniformément — elle est concentrée sur les nouveaux formats et les nouveaux publics :</p>
+    <ul class="plain">
+      <li><strong>Formats « sans shaker » : +26,96 %/an</strong> aux États-Unis (gummies et chewables), contre 78,9 % du marché encore détenu par la poudre. C'est exactement la thèse de votre produit.</li>
+      <li><strong>Gummies : +360 % en valeur sur un an.</strong> Aucune autre sous-catégorie du sport nutrition n'a fait ça récemment.</li>
+      <li><strong>Europe : +48 % de marques proposant des gummies de créatine</strong> — le format nouveau arrive en Europe avec ~18 mois de retard sur les US. Votre fenêtre européenne est donc plus ouverte que la fenêtre américaine.</li>
+      <li><strong>En ligne : 52 % des ventes US</strong> et le canal qui croît le plus vite (+26,5 %/an). Un DTC pur est viable ; vous n'avez pas besoin du retail pour démarrer.</li>
+    </ul>
+  </div>
+
+  <div class="note go">
+    <span class="note-label">Signal de validation externe</span>
+    <p>Create Wellness (gummies de créatine) a levé <strong>20 M$ en série B</strong> en mars 2026 et revendique 250 millions de gummies vendus, avec une distribution Target / Vitamin Shoppe / Sprouts. Ce n'est pas un concurrent direct, mais c'est la preuve financière que « la créatine dans un format pratique » est une thèse d'investissement validée, pas une intuition.</p>
+  </div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section id="concurrents">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Les concurrents positionnés exactement sur le gel</h2>
+  </div>
+
+  <div class="prose">
+    <p>Ils sont <strong>deux</strong>. Les deux sont américains, les deux dosent à 5 g, aucun n'est distribué en Europe à ma connaissance. Voici ce qu'ils font, et surtout comment ils résolvent le problème de stabilité.</p>
+  </div>
+
+  <div class="rivals">
+
+    <div class="rival">
+      <div class="rival-id">
+        <span class="rival-name">CREG+</span>
+        <span class="tag direct">Concurrent direct</span>
+        <span class="spec">cregplus.com<br>VEYLO LLC — Sheridan, Wyoming</span>
+      </div>
+      <div class="rival-body">
+        <p>Le seul <em>pure player</em> du gel de créatine. Sachet prêt à presser, 5 g de créatine monohydrate, parfum pêche léger, boîte de 30. Prix affiché en offre de lancement : <strong>1,93 $/jour, soit ~58 $/mois</strong>.</p>
+        <p>Leur angle marketing est intéressant et directement réutilisable : ils n'argumentent pas sur l'efficacité mais sur <strong>l'observance</strong> — « l'adhésion à la créatine tombe sous 40 % en 8 semaines », et ils imputent cet abandon à la friction du format, pas au produit. C'est le bon récit pour un gel.</p>
+        <p>Faiblesses exploitables : structure LLC de domiciliation (Sheridan, WY — adresse de registered agent classique), aucune information publiée sur la stabilité ou la base du gel, un seul parfum, pas de preuve analytique tierce affichée.</p>
+      </div>
+    </div>
+
+    <div class="rival">
+      <div class="rival-id">
+        <span class="rival-name">Promix</span>
+        <span class="tag direct">Concurrent direct</span>
+        <span class="spec">Liposomal Creatine<br>Marque établie — États-Unis</span>
+      </div>
+      <div class="rival-body">
+        <p>Sachet gel de 30 ml, 5 g de créatine monohydrate micronisée, parfum miel-vanille. 15 sachets à 39 $, soit <strong>2,60 $/portion</strong> — contre ~0,33 $ pour leur propre poudre. Le gel se vend donc <strong>8× le prix de la poudre</strong> chez le même vendeur : c'est votre référence de <em>pricing power</em>.</p>
+        <p><strong>C'est la pièce technique la plus importante du dossier.</strong> Leur base n'est pas aqueuse : glycérine de coco, amandes de Californie, miel, huile d'avocat. Autrement dit un gel <em>sans eau libre</em> — ce qui contourne précisément la dégradation en créatinine. Ils revendiquent d'ailleurs « une conversion en créatinine limitée pendant le stockage ».</p>
+        <p>Contrepartie assumée : <strong>140 kcal et 2 g de sucres ajoutés par portion</strong>, là où la poudre est à zéro calorie. Et allergène fruit à coque. C'est leur talon d'Achille — et votre différenciation possible.</p>
+      </div>
+    </div>
+
+    <div class="rival">
+      <div class="rival-id">
+        <span class="rival-name">Create Wellness</span>
+        <span class="tag adj">Adjacent</span>
+        <span class="spec">Gummies · 20 M$ levés<br>Target, Vitamin Shoppe, Sprouts</span>
+      </div>
+      <div class="rival-body">
+        <p>Leader du format « créatine sans shaker ». 250 M de gummies vendus, extension récente en Créatine + Électrolytes. Ne fait pas de gel, mais occupe le même besoin et absorbe le même budget publicitaire. C'est le concurrent de <em>substitution</em> le plus dangereux.</p>
+      </div>
+    </div>
+
+    <div class="rival">
+      <div class="rival-id">
+        <span class="rival-name">Sticks &amp; sachets de poudre</span>
+        <span class="tag adj">Adjacent</span>
+        <span class="spec">Myprotein · Applied Nutrition<br>Arrival Wellness · Neutonic</span>
+      </div>
+      <div class="rival-body">
+        <p>Myprotein <em>THE Creatine</em> (Creapure®, 5 g), Applied Nutrition <em>BodyFuel</em> sticks (UK), Arrival Wellness (sachets féminins, lancé août 2026), Neutonic (sticks). Ils résolvent le dosage mais <strong>pas le mélange</strong> : il faut encore de l'eau et un verre.</p>
+        <p>C'est précisément l'espace que le gel occupe : entre le stick de poudre (pratique mais mouillé) et le gummy (pratique mais sous-dosé). Ce sont eux qui définiront votre prix plancher.</p>
+      </div>
+    </div>
+
+    <div class="rival">
+      <div class="rival-id">
+        <span class="rival-name">Stimium MC3</span>
+        <span class="tag adj">Adjacent — France</span>
+        <span class="spec">Stick gel · marché français</span>
+      </div>
+      <div class="rival-body">
+        <p>Le seul acteur français identifié sur le format stick-gel en nutrition sportive. Produit orienté préparation / récupération / crampes, <strong>pas centré créatine</strong>. Utile surtout comme preuve que le format stick-gel se vend déjà en France et comme piste de sourcing façonnier.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note risk">
+    <span class="note-label">Le risque numéro un de la catégorie</span>
+    <p>Des tests tiers ont trouvé des gummies annoncés à 5 g dosant <strong>moins d'un centième de gramme</strong> de créatine réelle, et d'autres à zéro détectable. La catégorie « formats pratiques » est en train de se construire une réputation de sous-dosage.</p>
+    <p>C'est une menace <em>et</em> votre meilleure opportunité de positionnement : publier un <strong>certificat d'analyse par lot</strong> (HPLC, teneur créatine + créatinine) sur la fiche produit vous distingue immédiatement des deux concurrents directs, dont aucun ne le fait.</p>
+  </div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section id="sourcing">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Où faire fabriquer</h2>
+  </div>
+
+  <div class="prose">
+    <p>Deux briques distinctes à sourcer : <strong>la matière première</strong> (créatine monohydrate) et <strong>le façonnage du gel en sachet</strong>. Ne les confondez pas — la deuxième est la difficile.</p>
+  </div>
+
+  <h3>La matière première</h3>
+  <div class="supp">
+    <div>
+      <span class="s-geo">Allemagne</span>
+      <span class="s-name">Creapure® — AlzChem Trostberg</span>
+      <p class="s-txt">Le standard mondial. Pureté garantie 99,9 %, 30 ans d'historique, programme B2B dédié aux marques. Le label Creapure® sur le packaging est un argument de vente en soi sur le marché européen.</p>
+      <span class="s-meta">alzchem.com · creapure.com<br>Tarifs uniquement sur devis B2B direct</span>
+    </div>
+    <div>
+      <span class="s-geo">Europe — nouveau</span>
+      <span class="s-name">Qura Creatine</span>
+      <p class="s-txt">Créatine monohydrate haute pureté à solubilité améliorée, lancée à Vitafoods Europe 2026 (Barcelone) en visant explicitement les nouveaux formats : sticks et boissons. À interroger pour un gel.</p>
+      <span class="s-meta">Alternative récente à Creapure® — positionnement « formats de nouvelle génération »</span>
+    </div>
+  </div>
+
+  <h3>Le façonnage du gel en sachet</h3>
+  <div class="prose">
+    <p>Classés par pertinence pour <em>votre</em> cas précis — un gel à faible activité de l'eau, en stick ou sachet monodose.</p>
+  </div>
+
+  <div class="supp">
+    <div>
+      <span class="s-geo">Pays-Bas — mon premier appel</span>
+      <span class="s-name">Pouch Alliance</span>
+      <p class="s-txt">Le profil le plus exactement aligné : gels énergétiques, gels protéinés, gels isotoniques, shots vitaminés. Remplissage en stick monodose 15–60 ml, tubes 15–200 ml, doypacks à bec 60–500 ml. Développement de formulation en interne, private label et marques nationales, petites séries acceptées.</p>
+      <span class="s-meta">Egelskoog 9, 1822 BM Alkmaar · BRCGS Food Safety Issue 8<br>+31 (0)72 2004 250 · info@pouchalliance.com</span>
+    </div>
+    <div>
+      <span class="s-geo">Allemagne / UE</span>
+      <span class="s-name">GMP Pharma</span>
+      <p class="s-txt">Façonnier européen couvrant gels énergétiques, sachets, stick packs, poudres et liquides, pour des marques en Allemagne, Autriche, Suisse et dans toute l'UE. Bon second devis pour mettre Pouch Alliance en concurrence.</p>
+      <span class="s-meta">gmp-pharma.eu · fabrication + conditionnement + private label</span>
+    </div>
+    <div>
+      <span class="s-geo">Royaume-Uni</span>
+      <span class="s-name">Supplement Factory</span>
+      <p class="s-txt">Fabrication de gels liquides en stick packs et sachets, plusieurs formats, parfums sur mesure, production UK. Pratique si vous visez le marché britannique en direct (hors contraintes UE post-Brexit).</p>
+      <span class="s-meta">supplementfactoryuk.com · Unette Group est l'alternative UK sur sachets sport</span>
+    </div>
+    <div>
+      <span class="s-geo">France / Espagne</span>
+      <span class="s-name">Bewell Nutra</span>
+      <p class="s-txt">Deux sites de fabrication et un site de conditionnement en France, un site en Espagne. <strong>MOQ annoncé : 50 000 unités pour les sachets monodose</strong> — c'est le niveau d'engagement typique à anticiper. Argument « Fabriqué en France » exploitable.</p>
+      <span class="s-meta">bewell-nutra.com · voir aussi Naturacare / Strapharm (sticks, tubes, shots)</span>
+    </div>
+  </div>
+
+  <div class="note risk">
+    <span class="note-label">La question à poser dès le premier appel</span>
+    <p>Ne demandez pas « savez-vous faire un gel de créatine ». Demandez : <strong>« pouvez-vous formuler un gel à activité de l'eau (a<sub>w</sub>) basse, pH neutre ≥ 6,5, et me garantir par étude de stabilité accélérée un taux de créatinine inférieur à X % à 24 mois ? »</strong></p>
+    <p>Les données publiées sont sans ambiguïté : à 25 °C et après 3 jours seulement, la créatine en solution perd <strong>4 % à pH 5,5, 12 % à pH 4,5, 21 % à pH 3,5</strong>. La plupart des gels énergétiques du marché sont acides (conservation, goût). Un façonnier qui vous propose sa base gel standard vous propose un produit qui se dégradera en rayon. La réponse à cette question trie vos fournisseurs en un appel.</p>
+  </div>
+
+  <div class="note">
+    <span class="note-label">Contrainte réglementaire — France et UE</span>
+    <p>L'allégation santé créatine est autorisée au règlement <strong>(CE) n° 432/2012</strong> pour un apport de <strong>3 g/jour</strong> chez l'adulte, et l'ANSES recommande de ne pas dépasser 3 g/jour sans suivi médical. L'EFSA a conclu à l'absence de risque jusqu'à 3 g/jour <em>sous condition de pureté très élevée</em> — ce qui rend le choix Creapure® défendable réglementairement, pas seulement marketing.</p>
+    <p>Conséquence directe : <strong>vos deux concurrents à 5 g ne sont pas transposables tels quels en France.</strong> Prévoyez une SKU 3 g conforme UE et une SKU 5 g export.</p>
+  </div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section id="suite">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">Ce que je ferais maintenant</h2>
+  </div>
+
+  <div class="prose">
+    <p>Vous n'avez pas demandé cette section. Je l'ajoute parce que les quatre réponses ci-dessus changent l'ordre des priorités : le risque du projet n'est pas le marché, il est la formulation. Voici la séquence qui lève le risque le moins cher en premier.</p>
+  </div>
+
+  <ol class="steps">
+    <li>
+      <p><span class="st-t">Commander et disséquer les deux concurrents</span>Achetez CREG+ et Promix Liposomal. Relevez la liste INCI complète, le pH, la DLUO, la valeur énergétique. Coût : ~100 $. Vous saurez en une semaine comment ils ont résolu la stabilité.</p>
+    </li>
+    <li>
+      <p><span class="st-t">Qualifier trois façonniers sur la question a<sub>w</sub>/pH</span>Pouch Alliance, GMP Pharma, Bewell. Un seul critère de tri au premier appel : savent-ils garantir la stabilité par étude accélérée. Demandez les MOQ et le coût de développement de formule en même temps.</p>
+    </li>
+    <li>
+      <p><span class="st-t">Décider la base : lipidique ou glycérine sèche</span>Promix a choisi lipidique — et paie 140 kcal par dose. Un gel à base de glycérine/polyols sans corps gras pourrait tenir la stabilité à moins de 40 kcal, sans allergène fruit à coque. C'est votre différenciation produit si elle est techniquement atteignable.</p>
+    </li>
+    <li>
+      <p><span class="st-t">Verrouiller le dosage réglementaire avant le design packaging</span>3 g UE / 5 g export. Cette décision conditionne le volume du sachet, donc le moule, donc le devis. La prendre après le design coûte cher.</p>
+    </li>
+    <li>
+      <p><span class="st-t">Budgéter l'analyse tierce comme un poste marketing, pas qualité</span>HPLC créatine + créatinine par lot, publié sur la fiche produit. Vu le scandale de sous-dosage des gummies, c'est probablement votre meilleur euro de communication — et aucun des deux concurrents directs ne le fait.</p>
+    </li>
+  </ol>
+
+  <div class="note go">
+    <span class="note-label">Verdict</span>
+    <p>Le raisonnement de départ est bon : la créatine est le complément le plus documenté, la demande est réelle et croissante, le format est le vrai champ de bataille. La correction à apporter est que <strong>vous n'êtes pas premier — vous êtes troisième, et le mieux préparé peut encore gagner</strong>, parce qu'aucun des deux acteurs en place n'a de marque, de distribution européenne, ni de preuve analytique publiée. L'avantage se construit sur la formulation et la transparence, pas sur l'antériorité.</p>
+  </div>
+</section>
+
+<div class="sources">
+  <span class="eyebrow">Sources</span>
+  <ol>
+    <li><a href="https://www.thebusinessresearchcompany.com/report/creatine-supplement-global-market-report">The Business Research Company — Creatine Supplement Global Market Report</a></li>
+    <li><a href="https://www.grandviewresearch.com/industry-analysis/creatine-supplements-market-report">Grand View Research — Creatine Supplements Market</a></li>
+    <li><a href="https://www.mordorintelligence.com/industry-reports/united-states-creatine-supplements-market">Mordor Intelligence — US Creatine Supplements Market</a></li>
+    <li><a href="https://market.us/report/global-creatine-market/">Market.us — Global Creatine Market</a></li>
+    <li><a href="https://straitsresearch.com/report/creatine-gummies-market">Straits Research — Creatine Gummies Market</a></li>
+    <li><a href="https://www.factmr.com/report/creatine-gummies-market-analysis">Fact.MR — Creatine Gummies Market</a></li>
+    <li><a href="https://thecreatetrust.org/creatine-gummy-statistics/">Creatine Gummy Statistics (données SPINS)</a></li>
+    <li><a href="https://www.grandviewresearch.com/industry-analysis/europe-creatine-supplements-market-report">Grand View Research — Europe / France</a></li>
+    <li><a href="https://cregplus.com/">CREG+ — site officiel</a></li>
+    <li><a href="https://thebriefreview.com/promix-liposomal-creatine-review/">The Brief Review — Promix Liposomal Creatine</a></li>
+    <li><a href="https://www.nutraingredients.com/Article/2026/03/30/create-raises-20m-in-series-b-to-expand-creatine-access-and-innovation/">NutraIngredients — Create lève 20 M$</a></li>
+    <li><a href="https://www.nutraingredients.com/Article/2026/01/16/creatine-gummy-npd-explodes-2026-set-to-sift-out-unsustainable-strategies/">NutraIngredients — explosion des NPD gummies</a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/12916907/">PubMed — stabilité de la créatine en solution</a></li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3080578/">PMC — efficacité, sécurité et statut réglementaire des formes de créatine</a></li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/19635041/">PubMed — activité de l'eau et température sur la stabilité</a></li>
+    <li><a href="https://protealpes.com/en/creatine/interdite-france/">Protéalpes — cadre réglementaire français de la créatine</a></li>
+    <li><a href="https://pouchalliance.com/">Pouch Alliance — façonnier gels (NL)</a></li>
+    <li><a href="https://www.gmp-pharma.eu/supplement-manufacturing/">GMP Pharma — façonnier UE</a></li>
+    <li><a href="https://supplementfactoryuk.com/our-products/liquid-gel-manufacturing/">Supplement Factory — gels liquides (UK)</a></li>
+    <li><a href="https://www.bewell-nutra.com/">Bewell Nutra — façonnier France/Espagne</a></li>
+    <li><a href="https://www.creapure.com/en/creapure/for-manufacturers-resellers/">Creapure® — programme fabricants</a></li>
+    <li><a href="https://www.nutritioninsight.com/news/qura-creatine-vitafoods-sports-nutrition.html">Nutrition Insight — Qura Creatine à Vitafoods 2026</a></li>
+  </ol>
+</div>
+
+<footer class="foot">
+  <span class="eyebrow">TPS Digital Services — dossier de marché</span>
+  <span class="eyebrow">Chiffres publiés par des cabinets tiers · à revalider avant engagement financier</span>
+</footer>
+
+</div>
