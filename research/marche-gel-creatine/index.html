@@ -17,6 +17,7 @@
     --risk-soft:#F3E2DB;
     --go:#2E6B4F;
     --go-soft:#DFEBE3;
+    --c1:#FFBB10; --c2:#2F6F6B; --c3:#B9A88C; --c4:#4A4550; --c5:#A33A1E;
     --display:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
     --body:'Source Serif 4',Georgia,'Times New Roman',serif;
     --prose:64ch;
@@ -28,6 +29,7 @@
       --accent:#FFBB10; --accent-deep:#FFD166;
       --risk:#E89073; --risk-soft:#3A241C;
       --go:#79C39D; --go-soft:#1D3329;
+      --c1:#FFBB10; --c2:#5FAFA8; --c3:#A8977C; --c4:#B5AEC2; --c5:#E89073;
     }
   }
   :root[data-theme="dark"]{
@@ -36,6 +38,7 @@
     --accent:#FFBB10; --accent-deep:#FFD166;
     --risk:#E89073; --risk-soft:#3A241C;
     --go:#79C39D; --go-soft:#1D3329;
+    --c1:#FFBB10; --c2:#5FAFA8; --c3:#A8977C; --c4:#B5AEC2; --c5:#E89073;
   }
 
   *{box-sizing:border-box}
@@ -181,6 +184,29 @@
 
   footer.foot{margin-top:52px; padding-top:18px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:space-between}
 
+  /* ---------- calculateur ---------- */
+  .calc{border:1px solid var(--line-strong); background:var(--surface); margin:32px 0}
+  .calc-head{padding:18px 22px 0}
+  .calc-title{font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:-.01em; margin:0 0 4px}
+  .calc-sub{font-family:var(--display); font-size:12.5px; color:var(--muted); margin:0}
+  .calc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px 26px; padding:20px 22px 22px}
+  .fld{display:flex; flex-direction:column; gap:7px}
+  .fld label{font-family:var(--display); font-size:11px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted)}
+  .fld .val{font-family:var(--display); font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+  .fld select{
+    font-family:var(--display); font-size:14px; padding:9px 10px; width:100%;
+    background:var(--paper); color:var(--ink); border:1px solid var(--line-strong); border-radius:0;
+  }
+  .fld input[type=range]{width:100%; accent-color:var(--accent); height:22px; background:transparent}
+  .fld input:focus-visible,.fld select:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .calc-out{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border-top:1px solid var(--line-strong)}
+  .calc-out > div{background:var(--sunk); padding:16px 18px 18px; display:flex; flex-direction:column; gap:5px}
+  .calc-out .k{font-family:var(--display); font-size:10.5px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--muted)}
+  .calc-out .v{font-family:var(--display); font-size:24px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:-.022em; line-height:1.05}
+  .calc-out .n{font-family:var(--display); font-size:11.5px; color:var(--muted); line-height:1.4}
+  .v.pos{color:var(--go)} .v.neg{color:var(--risk)}
+  .calc-foot{padding:14px 22px 18px; border-top:1px solid var(--line); font-family:var(--display); font-size:11.5px; color:var(--muted); line-height:1.55}
+
   @media (max-width:620px){
     body{font-size:16px}
     .rival{grid-template-columns:1fr; gap:12px}
@@ -201,7 +227,7 @@
   <p class="standfirst">Le marché de la créatine croît entre 11 % et 25 % par an selon les cabinets. Le format gel existe, mais il est occupé par deux acteurs seulement — et la chimie explique pourquoi.</p>
   <div class="masthead-meta">
     <span class="eyebrow">Périmètre : monde · Europe · France</span>
-    <span class="eyebrow">4 questions posées · 5 sections</span>
+    <span class="eyebrow">Marché · concurrence · sourcing · prix de revient · budget</span>
   </div>
 </header>
 
@@ -212,6 +238,7 @@
     <li><strong>La vraie barrière n'est pas commerciale, elle est chimique.</strong> La créatine se dégrade en créatinine au contact de l'eau, d'autant plus vite que le pH est bas : ~12 % de perte en 3 jours à pH 4,5. Un gel aqueux classique est un produit mort en stock. C'est la raison pour laquelle la catégorie est vide — pas un oubli du marché.</li>
     <li><strong>Le marché porteur est là.</strong> 1,7–1,9 Md$ mondial en 2026, US à 0,51 Md$ (2025) vers 1,82 Md$ (2031), Europe ~220 M$ (2024) à ~500 M$ (2030). Les formats « sans shaker » sont le segment le plus rapide (+27 %/an aux US).</li>
     <li><strong>La France impose 3 g/jour, pas 5 g.</strong> Toute la concurrence dose à 5 g. Un lancement français à 5 g est hors-cadre réglementaire.</li>
+    <li><strong>Comptez 75 à 110 k€ pour un lancement défendable</strong>, dont 38 500 € de premier run. La créatine elle-même représente 8 % du coût de production — ce sont le remplissage et la base gel qui font le prix. Seuil de rentabilité : ~390 clients abonnés.</li>
   </ol>
 </div>
 
@@ -518,9 +545,238 @@
 </section>
 
 <!-- ============ 05 ============ -->
-<section id="suite">
+<section id="cogs">
   <div class="sec-head">
     <span class="sec-num">05</span>
+    <h2 class="sec-title">Le prix de revient</h2>
+  </div>
+
+  <div class="prose">
+    <p>Première chose à intégrer, parce qu'elle est contre-intuitive : <strong>la créatine ne coûte rien.</strong> Le monohydrate se négocie 3 à 4,30 $/kg sortie usine en Chine, et 4,40 à 6,80 €/kg en entrepôt européen à partir de 25 kg. Même en Creapure® allemand — que j'estime dans la zone 10–16 €/kg en B2B, à confirmer par devis — <strong>5 g de matière active vous coûtent 5 à 7 centimes.</strong></p>
+    <p>Autrement dit : l'ingrédient représente environ 8 % de votre coût de production. Ce que vous payez, c'est <strong>la base gel, le film du sachet, et surtout le remplissage.</strong> C'est là que se joue votre marge, et c'est là que le volume change tout.</p>
+  </div>
+
+  <figure>
+    <div class="chartbox">
+      <svg viewBox="0 0 720 268" role="img" aria-label="Décomposition du coût de production par sachet selon le volume : 0,745 € à 50 000 sachets, 0,51 € à 200 000, 0,392 € à 600 000. Le remplissage est le poste dominant, la créatine le plus faible.">
+        <g font-family="Space Grotesk, sans-serif">
+          <!-- axis -->
+          <line x1="110" y1="40" x2="110" y2="216" stroke="var(--line-strong)" stroke-width="1.5"/>
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="281.9" y1="40" x2="281.9" y2="216"/>
+            <line x1="453.8" y1="40" x2="453.8" y2="216"/>
+            <line x1="625.6" y1="40" x2="625.6" y2="216"/>
+          </g>
+          <g fill="var(--muted)" font-size="10.5" text-anchor="middle">
+            <text x="110" y="34">0 €</text>
+            <text x="281.9" y="34">0,25 €</text>
+            <text x="453.8" y="34">0,50 €</text>
+            <text x="625.6" y="34">0,75 €</text>
+          </g>
+
+          <!-- tier 1 : 50k -->
+          <text x="100" y="60" fill="var(--ink)" font-size="12" font-weight="700" text-anchor="end">50 000</text>
+          <text x="100" y="74" fill="var(--muted)" font-size="10" text-anchor="end">sachets</text>
+          <g>
+            <rect x="110" y="48" width="44.7" height="34" fill="var(--c1)"/>
+            <rect x="154.7" y="48" width="123.8" height="34" fill="var(--c2)"/>
+            <rect x="278.5" y="48" width="68.8" height="34" fill="var(--c3)"/>
+            <rect x="347.3" y="48" width="240.6" height="34" fill="var(--c4)"/>
+            <rect x="587.9" y="48" width="34.4" height="34" fill="var(--c5)"/>
+          </g>
+          <text x="632" y="69" fill="var(--ink)" font-size="13" font-weight="700">0,745 €</text>
+
+          <!-- tier 2 : 200k -->
+          <text x="100" y="122" fill="var(--ink)" font-size="12" font-weight="700" text-anchor="end">200 000</text>
+          <text x="100" y="136" fill="var(--muted)" font-size="10" text-anchor="end">sachets</text>
+          <g>
+            <rect x="110" y="110" width="41.3" height="34" fill="var(--c1)"/>
+            <rect x="151.3" y="110" width="103.1" height="34" fill="var(--c2)"/>
+            <rect x="254.4" y="110" width="41.3" height="34" fill="var(--c3)"/>
+            <rect x="295.7" y="110" width="151.3" height="34" fill="var(--c4)"/>
+            <rect x="447" y="110" width="13.8" height="34" fill="var(--c5)"/>
+          </g>
+          <text x="470" y="131" fill="var(--ink)" font-size="13" font-weight="700">0,51 €</text>
+
+          <!-- tier 3 : 600k -->
+          <text x="100" y="184" fill="var(--ink)" font-size="12" font-weight="700" text-anchor="end">600 000</text>
+          <text x="100" y="198" fill="var(--muted)" font-size="10" text-anchor="end">sachets</text>
+          <g>
+            <rect x="110" y="172" width="37.8" height="34" fill="var(--c1)"/>
+            <rect x="147.8" y="172" width="89.4" height="34" fill="var(--c2)"/>
+            <rect x="237.2" y="172" width="30.9" height="34" fill="var(--c3)"/>
+            <rect x="268.1" y="172" width="103.1" height="34" fill="var(--c4)"/>
+            <rect x="371.2" y="172" width="8.3" height="34" fill="var(--c5)"/>
+          </g>
+          <text x="389" y="193" fill="var(--ink)" font-size="13" font-weight="700">0,392 €</text>
+
+          <text x="110" y="244" fill="var(--muted)" font-size="11">Passer de 50 000 à 600 000 sachets divise le coût unitaire par 1,9 — l'essentiel de l'économie vient du poste remplissage.</text>
+        </g>
+      </svg>
+      <div class="chart-legend">
+        <span class="lg"><i style="background:var(--c1)"></i>Créatine (5 g)</span>
+        <span class="lg"><i style="background:var(--c2)"></i>Base gel</span>
+        <span class="lg"><i style="background:var(--c3)"></i>Film sachet</span>
+        <span class="lg"><i style="background:var(--c4)"></i>Remplissage &amp; façonnage</span>
+        <span class="lg"><i style="background:var(--c5)"></i>Contrôle qualité</span>
+      </div>
+    </div>
+    <figcaption>Coût de production par sachet, façonnier européen. La matière première créatine (jaune) est le plus petit poste à tous les volumes. Base : quotes publiés pour la créatine et les gels OEM ; les postes remplissage et base gel sont mes estimations à faire confirmer par devis (voir note de fiabilité plus bas).</figcaption>
+  </figure>
+
+  <h3>Le COGS par boîte de 30 sachets</h3>
+
+  <figure>
+    <div class="tablewrap">
+      <table>
+        <caption>Cure d'un mois — 30 sachets de 5 g</caption>
+        <thead>
+          <tr><th>Poste</th><th class="num">50 000 sachets</th><th class="num">200 000</th><th class="num">600 000</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Créatine Creapure® 5 g</td><td class="num">1,95 €</td><td class="num">1,80 €</td><td class="num">1,65 €</td></tr>
+          <tr><td class="name">Base gel (~30 ml)</td><td class="num">5,40 €</td><td class="num">4,50 €</td><td class="num">3,90 €</td></tr>
+          <tr><td class="name">Film stick imprimé</td><td class="num">3,00 €</td><td class="num">1,80 €</td><td class="num">1,35 €</td></tr>
+          <tr><td class="name">Remplissage &amp; façonnage</td><td class="num">10,50 €</td><td class="num">6,60 €</td><td class="num">4,50 €</td></tr>
+          <tr><td class="name">Contrôle qualité amorti</td><td class="num">1,50 €</td><td class="num">0,60 €</td><td class="num">0,36 €</td></tr>
+          <tr><td class="name">Étui carton + notice</td><td class="num">0,55 €</td><td class="num">0,40 €</td><td class="num">0,32 €</td></tr>
+          <tr><td class="name"><strong>COGS sortie usine</strong></td><td class="num"><strong>22,90 €</strong></td><td class="num"><strong>15,70 €</strong></td><td class="num"><strong>12,08 €</strong></td></tr>
+          <tr><td class="name">Transport + stockage</td><td class="num">0,55 €</td><td class="num">0,40 €</td><td class="num">0,30 €</td></tr>
+          <tr><td class="name">Préparation + expédition client (FR)</td><td class="num">5,50 €</td><td class="num">4,80 €</td><td class="num">4,20 €</td></tr>
+          <tr><td class="name"><strong>Coût rendu client</strong></td><td class="num"><strong>28,95 €</strong></td><td class="num"><strong>20,90 €</strong></td><td class="num"><strong>16,58 €</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Une version française à 3 g dans un sachet de 20 ml économise environ 6 à 10 centimes par sachet sur la base gel et le film — soit 2 à 3 € par boîte. La contrainte réglementaire n'est donc pas un surcoût, c'est une économie.</figcaption>
+  </figure>
+
+  <h3>Le point de référence : ce que vendent les autres</h3>
+  <div class="prose">
+    <p>CREG+ facture 1,93 $/jour, soit environ <strong>53 € la cure mensuelle</strong>. Promix facture 2,60 $/portion, soit environ <strong>72 €</strong>. La poudre équivalente coûte au consommateur autour de <strong>3 € le mois</strong>.</p>
+    <p>Le gel se vend donc entre 16 et 24 fois le prix de la poudre. Promix le fait ouvertement : 2,60 $ le sachet contre 0,33 $ la dose de sa propre poudre, <strong>un rapport de 8 chez le même vendeur</strong>. Ce n'est pas une anomalie, c'est le prix du confort — mais cela veut dire que tout votre argumentaire commercial doit porter ce multiple.</p>
+  </div>
+
+  <div class="calc">
+    <div class="calc-head">
+      <p class="calc-title">Simulateur de marge</p>
+      <p class="calc-sub">Ajustez le volume, le prix de vente et le coût d'acquisition pour voir où bascule le modèle.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="fld">
+        <label for="volTier">Volume du run</label>
+        <select id="volTier">
+          <option value="22.90">50 000 sachets — COGS 22,90 €</option>
+          <option value="15.70" selected>200 000 sachets — COGS 15,70 €</option>
+          <option value="12.08">600 000 sachets — COGS 12,08 €</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="prix">Prix de vente TTC / boîte</label>
+        <span class="val" id="prixVal">50 €</span>
+        <input type="range" id="prix" min="25" max="85" step="1" value="50">
+      </div>
+      <div class="fld">
+        <label for="cac">Coût d'acquisition client</label>
+        <span class="val" id="cacVal">55 €</span>
+        <input type="range" id="cac" min="20" max="100" step="5" value="55">
+      </div>
+    </div>
+    <div class="calc-out">
+      <div><span class="k">Marge brute</span><span class="v" id="oMb">34,30 €</span><span class="n" id="oMbPct">68,6 % du prix</span></div>
+      <div><span class="k">1<sup>re</sup> commande</span><span class="v" id="oC1">−20,70 €</span><span class="n">après acquisition</span></div>
+      <div><span class="k">Seuil de rentabilité</span><span class="v" id="oPb">2</span><span class="n" id="oPbN">commandes par client</span></div>
+      <div><span class="k">LTV : CAC à 8 mois</span><span class="v" id="oRatio">5,0 : 1</span><span class="n" id="oRatioN">cible ≥ 3 : 1</span></div>
+    </div>
+    <p class="calc-foot">Marge brute = prix − COGS sortie usine (hors logistique). LTV modélisée sur 8 commandes mensuelles, cohérente avec un churn de 5–8 %/mois après le premier mois. Le CAC médian observé sur Meta pour un complément alimentaire est de 45,62 $ par achat, avec des CPM santé/bien-être en hausse de 38 % sur un an.</p>
+  </div>
+
+  <div class="note risk">
+    <span class="note-label">Le piège du modèle à la boîte unique</span>
+    <p>Avec un panier à 50 € et un CAC de 55 €, <strong>vous perdez de l'argent sur la première commande, quel que soit votre volume de production.</strong> Ce n'est pas un défaut de votre projet, c'est la structure de tout le DTC complément alimentaire — la référence sectorielle est un LTV:CAC de 3:1 minimum avec un LTV de 300 à 600 € sur douze mois.</p>
+    <p>Conséquence opérationnelle : <strong>ne lancez pas en vente à l'unité.</strong> Soit vous lancez directement en abonnement, soit vous vendez un pack de 3 mois (90 sachets) autour de 119 € — ce qui vous rend rentable dès la première transaction, avec une marge brute d'environ 72 € par client acquis.</p>
+  </div>
+
+  <div class="note">
+    <span class="note-label">Note de fiabilité — à lire avant d'engager de l'argent</span>
+    <p>Sont <strong>sourcés</strong> : les prix de la créatine en vrac, la fourchette OEM des gels énergétiques (6–14 $/kg à gros volume, ~0,30 $/pièce chez certains fabricants asiatiques), les prix de vente des concurrents, les benchmarks CAC et marge brute du secteur.</p>
+    <p>Sont <strong>estimés par moi</strong> et doivent être remplacés par des devis réels : le coût de la base gel, le coût de remplissage européen, les coûts de transport et de préparation de commande. Ce sont précisément les trois postes qui font 80 % du COGS. <strong>Traitez ce tableau comme une maquette à remplir, pas comme un budget validé</strong> — trois devis façonniers suffisent à le rendre exact.</p>
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<section id="budget">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <h2 class="sec-title">Le budget à prévoir</h2>
+  </div>
+
+  <div class="prose">
+    <p>Trois niveaux d'engagement, selon ce que vous cherchez à prouver. Le premier teste si le marché répond. Le deuxième construit une marque défendable. Le troisième attaque l'Europe.</p>
+  </div>
+
+  <figure>
+    <div class="tablewrap">
+      <table>
+        <caption>Budget de lancement par scénario</caption>
+        <thead>
+          <tr>
+            <th>Poste</th>
+            <th class="num">Test de marché</th>
+            <th class="num">Lancement sérieux</th>
+            <th class="num">Scale européen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="name">Validation — achat et analyse des concurrents, dépôt de marque</td><td class="num">1 500 €</td><td class="num">2 500 €</td><td class="num">3 500 €</td></tr>
+          <tr><td class="name">Développement de formule + lots pilotes</td><td class="num">4 000 €</td><td class="num">9 000 €</td><td class="num">12 000 €</td></tr>
+          <tr><td class="name">Étude de stabilité accélérée + analyses réglementaires</td><td class="num">2 000 €</td><td class="num">6 000 €</td><td class="num">10 000 €</td></tr>
+          <tr><td class="name">Marque, packaging, clichés d'impression, contenus</td><td class="num">3 000 €</td><td class="num">8 000 €</td><td class="num">15 000 €</td></tr>
+          <tr><td class="name">Premier run de production</td><td class="num">15 300 €</td><td class="num">38 500 €</td><td class="num">104 700 €</td></tr>
+          <tr><td class="name">Site, logistique, assurance RC produit, structure</td><td class="num">2 500 €</td><td class="num">5 000 €</td><td class="num">10 000 €</td></tr>
+          <tr><td class="name">Acquisition — phase de test puis montée en charge</td><td class="num">7 000 €</td><td class="num">12 000 €</td><td class="num">50 000 €</td></tr>
+          <tr><td class="name"><strong>Total</strong></td><td class="num"><strong>35 300 €</strong></td><td class="num"><strong>81 000 €</strong></td><td class="num"><strong>205 200 €</strong></td></tr>
+          <tr><td class="name">Fourchette réaliste avec aléas</td><td class="num">35 – 50 k€</td><td class="num">75 – 110 k€</td><td class="num">180 – 280 k€</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figcaption>Volumes de production correspondants : 15 000 sachets (500 boîtes), 50 000 sachets (1 667 boîtes), 200 000 sachets (6 667 boîtes). Le scénario « test de marché » suppose que le design est fait en interne et que l'étude de stabilité est écourtée — ce qui est un raccourci assumé, pas une bonne pratique.</figcaption>
+  </figure>
+
+  <h3>Ce que ces chiffres racontent vraiment</h3>
+  <div class="prose">
+    <p>Regardez la structure, pas les totaux. <strong>Sur le scénario sérieux, la production pèse 38 500 € et l'acquisition 12 000 €</strong> — et c'est là qu'est le piège, parce que ces 12 000 € ne suffisent pas à écouler le run.</p>
+    <p>À 55 € de CAC, écouler 1 667 boîtes en vente unitaire coûterait 92 000 € de publicité. Écouler le même stock via des packs de 3 mois, c'est 556 clients, soit 30 600 €. <strong>Le choix du format d'offre change le budget marketing d'un facteur trois</strong>, pour exactement le même stock. C'est la décision la plus rentable du projet et elle ne coûte rien à prendre.</p>
+    <p>Le budget de 12 000 € couvre donc une <em>phase de test</em> — environ 200 à 220 acquisitions — pas l'écoulement complet. La suite doit s'autofinancer sur la marge, ou faire l'objet d'une tranche supplémentaire décidée sur données réelles.</p>
+  </div>
+
+  <div class="note go">
+    <span class="note-label">Votre seuil de rentabilité</span>
+    <p>Scénario sérieux, 81 000 € engagés. À 50 € la boîte, 15,70 € de COGS et 55 € de CAC, chaque client abonné rapporte environ 209 € de contribution sur huit mois.</p>
+    <p><strong>Il vous faut donc environ 390 clients abonnés pour rembourser l'intégralité du lancement.</strong> Ces 390 clients consomment votre premier run en un peu plus de quatre mois — les deux chiffres sont cohérents, ce qui veut dire que le dimensionnement tient. C'est l'objectif à écrire sur le mur.</p>
+  </div>
+
+  <h3>Les postes que tout le monde oublie</h3>
+  <div class="prose">
+    <ul class="plain">
+      <li><strong>Les clichés d'impression du film</strong> — 800 à 2 500 € par référence, non récupérables. Chaque parfum supplémentaire est un nouveau jeu. Lancez avec <em>un</em> parfum.</li>
+      <li><strong>L'assurance responsabilité civile produit</strong> — 600 à 2 500 €/an, et plusieurs 3PL et places de marché refusent de vous référencer sans elle.</li>
+      <li><strong>Le besoin en fonds de roulement</strong> — le façonnier demande en général 50 % à la commande et le solde avant expédition, avec 8 à 12 semaines de production. Vous immobilisez la totalité du run 3 à 6 mois avant le premier euro encaissé. Prévoyez cette trésorerie en plus du budget.</li>
+      <li><strong>Les droits de douane et la TVA à l'import</strong> si vous sourcez la créatine en Chine — c'est précisément l'écart entre 3,65 $/kg sortie usine et 5,60 €/kg en entrepôt UE. À ces volumes, l'entrepôt européen est presque toujours le bon choix.</li>
+      <li><strong>Les retours et la casse</strong> — un gel en sachet voyage mal mal calé. Comptez 2 à 4 % du chiffre d'affaires.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="note-label">Réglementaire — bonne nouvelle</span>
+    <p>La déclaration de mise sur le marché en France se fait via la téléprocédure <strong>Téléicare</strong>, et la procédure de l'article 15 (déclaration informative, pour une composition conforme aux exigences nationales) est <strong>gratuite</strong>. La créatine à 3 g/jour entre dans ce cadre. Si votre formule sortait du cadre national, c'est l'article 16 qui s'applique — reconnaissance mutuelle, deux mois d'instruction.</p>
+    <p>Budgétez donc zéro de taxe, mais 500 à 1 500 € si vous faites relire votre étiquetage par un consultant réglementaire. À ce prix-là, faites-le : une erreur d'allégation se paie en rappel produit.</p>
+  </div>
+</section>
+
+<!-- ============ 07 ============ -->
+<section id="suite">
+  <div class="sec-head">
+    <span class="sec-num">07</span>
     <h2 class="sec-title">Ce que je ferais maintenant</h2>
   </div>
 
@@ -543,6 +799,12 @@
     </li>
     <li>
       <p><span class="st-t">Budgéter l'analyse tierce comme un poste marketing, pas qualité</span>HPLC créatine + créatinine par lot, publié sur la fiche produit. Vu le scandale de sous-dosage des gummies, c'est probablement votre meilleur euro de communication — et aucun des deux concurrents directs ne le fait.</p>
+    </li>
+    <li>
+      <p><span class="st-t">Trancher le format d'offre avant d'écrire la première ligne de pub</span>Pack 3 mois à ~119 € plutôt que boîte unique à 50 €. Même stock, même produit, budget d'acquisition divisé par trois et rentabilité dès la première transaction. C'est la décision la moins chère et la plus rentable de tout le projet.</p>
+    </li>
+    <li>
+      <p><span class="st-t">Remplacer mes estimations par trois devis réels</span>Base gel, remplissage, logistique : ces trois postes font 80 % du COGS et ce sont les trois que j'ai estimés. Tant qu'ils ne sont pas chiffrés par un façonnier, le budget de la section 06 est une hypothèse de travail, pas un plan de financement.</p>
     </li>
   </ol>
 
@@ -577,6 +839,14 @@
     <li><a href="https://www.bewell-nutra.com/">Bewell Nutra — façonnier France/Espagne</a></li>
     <li><a href="https://www.creapure.com/en/creapure/for-manufacturers-resellers/">Creapure® — programme fabricants</a></li>
     <li><a href="https://www.nutritioninsight.com/news/qura-creatine-vitafoods-sports-nutrition.html">Nutrition Insight — Qura Creatine à Vitafoods 2026</a></li>
+    <li><a href="https://creavante.com/guides/bulk-creatine-price-guide/">Creavante — prix de la créatine en vrac, Chine vs UE 2026</a></li>
+    <li><a href="https://caloongchem.com/creatine-monohydrate-price-2026-why-the-market-is-entering-a-downward-correction-after-a-high-cycle/">Caloong Chem — correction des prix créatine 2026</a></li>
+    <li><a href="https://www.sdrxsw.com/blog-details/66.html">Shandong Runxin — coûts OEM, R&amp;D et contrôle qualité</a></li>
+    <li><a href="https://www.accio.com/plp/energy-gel-private-label">Accio — gels énergétiques private label, MOQ et prix unitaires</a></li>
+    <li><a href="https://foundrycro.com/blog/dtc-supplements-marketing-benchmarks-2026/">Foundry CRO — benchmarks DTC compléments 2026 (CAC, AOV, marge, LTV)</a></li>
+    <li><a href="https://eightx.co/blog/average-cac-by-channel">Eightx — CAC moyen par canal 2026</a></li>
+    <li><a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000031800510">Légifrance — déclaration de mise sur le marché, téléprocédure Téléicare</a></li>
+    <li><a href="https://www.economie.gouv.fr/files/files/directions_services/dgccrf/securite/produits_alimentaires/Complement_alimentaire/CA_decla_Bilan2017.pdf">DGCCRF — bilan des déclarations de compléments alimentaires</a></li>
   </ol>
 </div>
 
@@ -586,3 +856,63 @@
 </footer>
 
 </div>
+
+<script>
+(function(){
+  var tier = document.getElementById('volTier'),
+      prix = document.getElementById('prix'),
+      cac  = document.getElementById('cac');
+  if(!tier || !prix || !cac) return;
+
+  function eur(n){
+    return (n < 0 ? '−' : '') + Math.abs(n).toFixed(2).replace('.', ',') + ' €';
+  }
+
+  function render(){
+    var cogs = parseFloat(tier.value),
+        p    = parseFloat(prix.value),
+        c    = parseFloat(cac.value),
+        mb   = p - cogs,
+        pct  = mb / p * 100,
+        c1   = mb - c;
+
+    document.getElementById('prixVal').textContent = p + ' €';
+    document.getElementById('cacVal').textContent  = c + ' €';
+
+    var mbEl = document.getElementById('oMb');
+    mbEl.textContent = eur(mb);
+    mbEl.className = 'v ' + (pct >= 60 ? 'pos' : 'neg');
+    document.getElementById('oMbPct').textContent =
+      pct.toFixed(1).replace('.', ',') + ' % du prix · cible 60–70 %';
+
+    var e1 = document.getElementById('oC1');
+    e1.textContent = eur(c1);
+    e1.className = 'v ' + (c1 >= 0 ? 'pos' : 'neg');
+
+    var pb = document.getElementById('oPb'), pbn = document.getElementById('oPbN');
+    if(mb <= 0){
+      pb.textContent = '—'; pb.className = 'v neg';
+      pbn.textContent = 'jamais : le prix est sous le coût';
+    } else {
+      var n = Math.ceil(c / mb);
+      pb.textContent = n; pb.className = 'v ' + (n <= 3 ? 'pos' : 'neg');
+      pbn.textContent = n === 1 ? 'commande — rentable dès la 1re' : 'commandes par client';
+    }
+
+    var r = document.getElementById('oRatio'), rn = document.getElementById('oRatioN');
+    if(mb <= 0){
+      r.textContent = '—'; r.className = 'v neg'; rn.textContent = 'cible ≥ 3 : 1';
+    } else {
+      var ratio = (8 * mb) / c;
+      r.textContent = ratio.toFixed(1).replace('.', ',') + ' : 1';
+      r.className = 'v ' + (ratio >= 3 ? 'pos' : 'neg');
+      rn.textContent = ratio >= 3 ? 'au-dessus de la cible de 3 : 1' : 'sous la cible de 3 : 1';
+    }
+  }
+
+  tier.addEventListener('change', render);
+  prix.addEventListener('input', render);
+  cac.addEventListener('input', render);
+  render();
+})();
+</script>
